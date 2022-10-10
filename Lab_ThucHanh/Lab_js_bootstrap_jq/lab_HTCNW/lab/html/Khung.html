@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19434551_HoThiHongThuy_ThiCK_HTCNW</title>
+    <meta name="19434551" content="Hồ Thị Hồng Thủy">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myBtn").click(function () {
+                $("#myModal").modal();
+            });
+
+            function KiemTraName() {
+                var ten = $("#txtName").val();
+                var re = /^([A-Z]{1}[a-z]*\s)*([A-Z]{1}[a-z]*){1}$/;
+                if (ten == "") {
+                    $("#tbName").html("Không được bỏ trống");
+                    return false;
+                }
+                if (!re.test(ten)) {
+                    $("#tbName").html("Tên phải nhập chữ hoa đầu tiên!");
+                    return false;
+                }
+                $("#tbName").html("<br>");
+                return true;
+            }
+            $("#txtName").blur(KiemTraName);
+
+            var count = 1;
+            $("#btnSave").click(function () {
+                var ten = $("#txtName").val();
+                var anh = ($("#txtAnh").val()).lastIndexOf('\\');
+                if ( KiemTraName()==true) {
+                    var newRow = "<tr><td>" + (count) + "</td><td>" + ten + "</td><td>" + ($("#txtAnh").val()).slice(anh + 1) + "</td></tr>"
+                    $("#table").append(newRow);
+                    count++;
+                    $("#myModal").modal("hide");
+                    return true;
+                }
+                return false;
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-xs-12" style="margin-top:10px;">
+            <nav class="navbar navbar-collapse">
+                <!-- <img src="../img/Banner.png" alt="" width="100%"> -->
+            </nav>
+        </div>
+        <!--menu-->
+        <div class="col-xs-12">
+            <nav class="navbar navbar-collapse">
+                <ul class="nav nav-pills">
+                    <li><a href="Home.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVICES <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" id="myBtn">Online</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+
+        <!--content-->
+        <div class="col-xs-12">
+            <section class="col-xs-3">
+                <!-- <img src="../img/left.png" alt="" width=100%/> -->
+            </section>
+            <aside class="col-xs-9">
+                <h2 class="text-left">DANH SÁCH</h2>
+                <table class="table table-striped" role="table" id="table">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Anh the</th>
+                    </tr>
+                </table>
+            </aside>
+        </div>
+        <!--footer-->
+        <p class="modal-footer text-left text-success" style="text-align:left">
+            &copy;HTHT
+        </p>
+    </div>
+    <!--Modal-->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-tille text-center">Thông tin</h2>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontial">
+                        <label for="" class="control-lable col-xs-3">Họ tên</label>
+
+                        <div class="col-xs-9">
+                            <input type="text" name="name" id="txtName" class="form-control" placeholder="Your name">
+                            <span id="tbName" class="text-danger">*</span>
+                        </div>
+                        <label for="txtAnh" class="control-label col-xs-12" style="text-align:left;">Ảnh thẻ</label>
+                        <div class="col-xs-12">
+                            <input type="file" name="" id="txtAnh" class="form-control">
+                            <span class="text-danger" id="tbAnh">*</span>
+                        </div>
+                        <button type="button" id="btnSave" class="btn btn-success btn-group-justified">Save</button><br>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

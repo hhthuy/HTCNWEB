@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 18</title>
+    <meta name="19434551" content="Ho Thi Hong Thuy">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header {
+    background-color: #008000;
+}
+
+#nav li {
+    position: relative;
+}
+
+#nav > li {
+    display: inline-block;
+}
+
+#nav li a {
+    line-height: 47px;
+    padding: 0 24px;
+    text-decoration: none;
+    display: block;
+    color: #fff;
+}
+
+#nav, .subnav {
+    list-style-type: none;
+}
+
+#nav .subnav {
+    display: none;
+    position: absolute;
+    background-color: #008000;
+    top: 100%;
+    left: 0;
+}
+
+#nav .subnav li:hover a,
+#nav > li:hover > a {
+    color: yellow;
+}
+
+#nav li:hover .subnav {
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+    <div id="header">
+        <ul id="nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li>
+                <a href="#">Product</a>
+                <ul class="subnav">
+                    <li><a href="#">Engineering</a></li>
+                    <li><a href="#">Telecom</a></li>
+                    <li><a href="#">Energy</a></li>
+                    <li><a href="#">Finance</a></li>
+                    <li><a href="#">Consultancy</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</body>
+</html>

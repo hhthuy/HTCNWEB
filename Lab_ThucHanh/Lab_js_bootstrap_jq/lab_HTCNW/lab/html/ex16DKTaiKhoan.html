@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex16-Đăng ký tài khoản</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        [class="col-3"] {text-align: right;}
+        #erten,#ermk,#erns,#ersdt,#ermail,#erdc,#ermk,#ernlmk {
+            color: red; font-style: italic;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#txtten").blur(function () {
+                //KT Họ Ten
+                var ten = $(this).val();//this=txtten; val() lay cac phan tu tren form
+                //Họ Tên: Kí tự đầu viết HOA, ký tự sau viết thường có thể Có hoặc Không có
+                var regten = /^([A-Z]{1}[a-z]*\s)*([A-Z]{1}[a-z]*){1}$/;
+                if (regten.test(ten)) {
+                    //true
+                    $("#erten").html("(*)");
+                    return true;
+                } else {
+                    $("#erten").html("Nhập tên sai");
+                    return false;
+                }
+            })
+            $("#txtmk").blur(function () {
+                //KT Mật khẩu: Có chữ,số,ký tự đặc biệt, nằm vị trí bất kỳ và có chiều dài tối thiểu là 6.
+                //Biểu thức comeback: (?=.*  ): nằm ở vị trí bất kỳ nào. Dấu(*): Có/Không có. Dấu(+): ít nhất 1 ký tự
+                var mk = $(this).val();//123@aqw
+                var regmk = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@#$_-]+).{6,}$/;//[A-Za-z0-9]{6,}=AAdd123 ->Bắt buộc phải đứng thứ tự.
+                if (regmk.test(mk)) {
+                    $("#ermk").html("(*)");
+                    return true;
+                }
+                else {
+                    $("#ermk").html("Đã nhập mật khẩu hợp lệ!!!");
+                    return false;
+                }
+            });
+            $("#txtnlmk").blur(function () {
+                var mk = $("#txtmk").val();
+                var nlmk = $("#txtnlmk").val();
+                if (mk == nlmk) {
+                    $("#ernlmk").html("(*)");
+                    return true;
+                }
+                else {
+                    $("#ernlmk").html("Nhập lại mật khẩu phải trùng với mật khẩu!!!");
+                    return false;
+                }
+            })
+            //Năm sinh < 2000
+            $("#txtns").blur(function () {
+                var ns = new Date($(this).val());//Date() chuyen chuoi ve ngay,thang. Nếu lấy tháng: alert(ns.getMonth()+1);
+                var cur = new Date();//Ngày hiện hành
+                if (ns.getFullYear() <= 2002) {
+                    $("#erns").html("(*)");
+                    return true;
+                } else {
+                    $("#erns").html("Năm sinh <=2002");
+                    return false;
+                }
+            })
+            //Tuổi >16
+            // $("#txtns").blur(function () {
+            //     var ns= new Date($(this).val());//Date() chuyen chuoi ve ngay,thang. Nếu lấy tháng: alert(ns.getMonth()+1);
+            //     var cur=new Date();
+            //     var tuoi = cur.getFullYear()-ns.getFullYear();
+            //     if(tuoi >=16){
+            //         $("#erns").html("(*)");
+            //         return true;
+            //     }else{
+            //         $("#erns").html("Tuổi phải lớn hơn 16");
+            //         return false;
+            //     }
+            // })
+            //KT Ngay sau ngay hien tai  ngay
+            // $("#txtngay").blur(function () {
+            //     var day=new Date($(this).val());
+            //     var today=new Date();
+            //     today.setDate(today.getDate()+3)
+            //     if(day < today){
+            //         $("#erns").html("(*)");
+            //         return true;
+            //     }else{
+            //         $("#erns").html("Nhap Ngay sau ngay hien tai 3 ngay");
+            //         return false;
+            //     }
+            // })
+
+            //SDT
+            $("#txtsdt").blur(function () {
+                var sdt = $(this).val();
+                var regsdt = /^[0-9]{9,10}$/;
+                //var regsdt=/^[0-9]{3}\-\d{4}\-\d{3}$/; dang:0000-000-000
+                //var regsdt=/^03\\d{8}$/
+                if (regsdt.test(sdt)) {
+                    $("#ersdt").html("(*)");
+                    return true;
+                } else {
+                    $("#ersdt").html("SDT[9-10]");
+                    return false;
+                }
+            })
+
+            //Email
+            $("#txtemail").blur(function () {
+                var mail = $(this).val();
+                var regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if (regemail.test(mail)) {
+                    $("#ermail").html("(*)");
+                    return true;
+                }
+                else {
+                    $("#ermail").html("Địa chỉ email không đúng!Nhập lại!!!");
+                    return false;
+                }
+            })
+        })
+            // SDT: var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+             //ISBN:X-X-X-X-X, trong do X là 4 kí tự chữ viết hoa: [A-Z]{4}+[-][A-Z]{4}+[-][A-Z]{4}+[-][A-Z]{4} 
+            //Mã gồm 10 kí tự, 3 kí tự cuối phải là số: [A-Za-z0-9]{7}\\d{3}$
+            //Tựa de nhiều từ ngăn cách bằng khoảng trắng, không chứ kí tự đặc biệt ngoại trừ dấu nháy đơn: [a-zA-Z' ]+
+    </script>
+</head>
+
+<body>
+    <div class="container border" style="height: auto">
+        <div class="row border">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Logo</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 border" style="height:auto;">Left</div>
+            <div class="col-xs-12 col-sm-6 col-md-7 col-lg-8 border" style="height:auto;">
+                <form action="">
+
+                    <div class="col-12">
+                        <h2 class="text-center text-danger"><strong>ĐĂNG KÝ TÀI KHOẢN</strong></h2>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-3">
+                            <label for="Tên Đăng Nhập">Tên đăng nhập</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" name="" id="txtten" placeholder="Tên đăng nhập" class="form-control">
+                            <div id="erten">(*)</div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-3">
+                            <label for="Mật khẩu">Mật khẩu</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" class="form-control" id="txtmk" placeholder="Nhập vào mật khẩu"></input>
+                            <div id="ermk">(*)</div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-3">
+                            <label for="Mật khẩu">Nhập lại mật khẩu</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" class="form-control" id="txtnlmk"
+                                placeholder="Nhập vào xác nhận mật khẩu"></input>
+                            <div id="ernlmk">(*)</div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <h4 class="text-center text-danger"><strong>THÔNG TIN CÁ NHÂN</strong></h4>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-3">
+                            <label for="Họ và tên">Họ và tên</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" name="" id="txtten" placeholder="Nhập vào họ tên" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-3">Ngày sinh</div>
+                        <div class="col-9">
+                            <input type="date" name="" id="txtns" class="form-control">
+                            <div id="erns">(*)</div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-3">Giới tính</div>
+                        <div class="col-9">
+                            <div class="form-check-inline">
+                                <label for="" class="form-check-label">
+                                    <input type="radio" name="" id="gt" class="form-check-input" value="Nam">Nam
+                                    <input type="radio" name="" id="gt" class="form-check-input" value="Nu">Nữ
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-3">
+                            <label for="Địa chỉ">Địa chỉ</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" name="" id="txtDC" placeholder="Nhập vào địa chỉ" class="form-control">
+                            <div id="erdc">(*)</div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-3">
+                            <label for="Địa chỉ">Điện thoại</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="tel" name="" id="txtsdt" placeholder="Nhập vào SDT(9-10 số)"
+                                class="form-control">
+                            <div id="ersdt">(*)</div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-3">
+                            <label for="Địa chỉ">Email</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="email" name="" id="txtMail"
+                                placeholder="Nhập vào email dạng: ten@tencongty.com" class="form-control">
+                            <div id="ermail">(*)</div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-12 text-center">
+                            <input type="button" value="Đăng ký" class="btn btn-dark">
+                            <input type="reset" value="Hủy" class="btn btn-dark">
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 border" style="height:300px;">Right</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border">
+                <h1>Footer</h1>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

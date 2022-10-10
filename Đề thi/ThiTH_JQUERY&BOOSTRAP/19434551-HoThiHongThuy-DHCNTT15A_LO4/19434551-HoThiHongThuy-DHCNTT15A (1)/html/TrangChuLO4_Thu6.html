@@ -1,0 +1,145 @@
+<!--19434551_Hồ Thị Hồng Thủy-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LO4</title>
+    <meta name="19434551" content="Hồ Thị Hồng Thủy">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/TrangChuLO4.js"></script>
+    <style>
+        /* * {margin: 0px;padding: 0px;} */
+        [class="col-xs-12"] {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Tao layout trang-->
+    <div class="container pt-10 pl-0" style="height:-10px">
+        <!--Tao Header trang-->
+        <div class="row ">
+            <nav class="navbar navbar-default" style="margin:-4px;">
+                <div class="navbar-header col-xs-3" style="padding-top: 10px;">
+                    <img src="../img/logo.PNG" width="100%" />
+                </div>
+                <div class="navbar-header col-xs-9 text-center" style="height: auto">
+                    <h2>ĐOÀN THANH NIÊN ĐẠI HỌC CÔNG NGHIỆP THÀNH PHỐ HỒ CHÍ MINH</h2>
+                    <h3 class="text-danger">ĐOÀN THANH NIÊN KHOA CÔNG NGHỆ THÔNG TIN</h3>
+                </div>
+            </nav>
+        </div>
+        <!--Tao menu-->
+        <div class="row" style="height:auto">
+            <nav class="navbar bg-info">
+                <ul class="nav navbar-nav">
+                    <li><a href="Trangchu.html">TRANG CHỦ</a></li>
+                    <li><a href="#">ĐOÀN THỂ</a></li>
+                    <li><a href="#">SỰ KIỆN</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">HOẠT ĐỘNG<span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" id="myBtn">ĐĂNG KÝ</a></li>
+                            <li><a href="#" id="myBtn">THAM GIA</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!--Tao content LEFT-RIGHT-->
+        <div class="row">
+            <section class="col-xs-7 ">
+                <img src="../img/ngayhoithanhnien.JPG" />
+            </section>
+            <aside class="col-xs-5">
+                <h2 class="text-warning">TIN NỔI BẬT</h2>
+                <ol type="I" class="list-group-item-info bg-info">
+                    <li><a href="#">Mùa Hè Xanh</a></li>
+                    <li><a href="#">Thanh niên tình nguyện</a></li>
+                    <li><a href="#">Tấm lòng vàng</a></li>
+                    <li><a href="#">Hiến máu nhân đạo</a></li>
+                    <li><a href="#">Bảo về môi trường sạch</a></li>
+                    <li><a href="#">Thi đua lập thành tích chào mừng 26/3</a></li>
+                </ol>
+            </aside>
+        </div>
+
+
+        <div class="col-xs-12">
+            <h3 class="text-center text-warning">DANH SÁCH ĐĂNG KÍ HOẠT ĐỘNG MÙA HÈ XANH</h3>
+            <table class="table table-striped" role="table" id="table">
+                <tr>
+                    <th>STT</th>
+                    <th>Mã SV</th>
+                    <th>Tên SV</th>
+                    <th>Ngày tham gia</th>
+                    <th>Email</th>
+                    <th>Ảnh</th>
+                </tr>
+            </table>
+        </div>
+        <!--Tao footer-->
+        <div class="col-xs-12">
+            <p class="modal-footer text-right" style="background-color:royalblue; color: white; font-size: 12px;">
+                &copy;2020 Đoàn thanh niên - KhoaCNTT Truong DHCN TPHCM</p>
+        </div>
+    </div>
+
+    <!--Tao Modal-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="text-danger text-center">THÔNG TIN ĐĂNG KÝ</h2>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <label for="txtMASV" class="control-label col-xs-12" style="text-align:left;">Mã sinh
+                            viên</label>
+                        <div class="col-xs-12">
+                            <input type="text" id="txtMASV" class="form-control" placeholder="Mã sinh viên">
+                            <span class="text-danger" id="tbMASV">*</span>
+                        </div>
+                        <label for="txtName" class="control-label col-xs-12" style="text-align:left;">Họ tên</label>
+                        <div class="col-xs-12">
+                            <input type="text" id="txtName" class="form-control" placeholder="Họ tên">
+                            <span class="text-danger" id="tbName">*</span>
+                        </div>
+
+                        <label for="txtDay" class="control-label col-xs-12" style="text-align:left;">Ngày tham
+                            gia</label>
+                        <div class="col-xs-12">
+                            <input type="date" id="txtDay" class="form-control" placeholder="Ngày tham gia">
+                            <span class="text-danger" id="tbDay">*</span>
+                        </div>
+
+                        <label for="txtMail" class="control-label col-xs-12" style="text-align:left;">Email</label>
+                        <div class="col-xs-12">
+                            <input type="mail" id="txtMail" class="form-control" placeholder="Email">
+                            <span class="text-danger" id="tbMail">*</span>
+                        </div>
+
+                        <label for="txtAnh" class="control-label col-xs-12" style="text-align:left;">Ảnh thẻ</label>
+                        <div class="col-xs-12">
+                                <input type="file" name="" id="txtAnh" class="form-control">
+                                <span class="text-danger" id="tbAnh">*</span>
+                        </div>
+                        <button type="button" class="btn btn-danger btn-group-justified" id="btnSave">
+                            Lưu
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

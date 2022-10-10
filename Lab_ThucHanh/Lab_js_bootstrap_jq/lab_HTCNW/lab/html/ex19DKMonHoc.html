@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex19-Đăng ký Môn học</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+        //$().event(handler(){...})
+        $(document).ready(function () {
+            function ktten() {
+                var regten = /^([A-Z]{1}[a-z]*\s)*([A-Z]{1}[a-z]*)$/;
+                var ten = $("#txtten").val();
+                //Kiem tra dl nhap vao
+                if (regten.test(ten)) {
+                    $("#ert").html("Tên đúng định dạng.");
+                    $("#tb").html("(*)");
+                    return true;
+                } else {
+                    $("#ert").html("Tên nhập sai!!");
+                    return false;
+                }
+            }
+            $("#txtten").blur(ktten);
+
+            //Đưa dữ liệu vào table
+            var count = 1;
+            $("#btndk").click(function () {
+                if (ktten == false) {
+                    $("#tb").html("Điền thông tin chưa đầy đủ");
+                    return flase;
+                }
+                var ten, lop, loai, mon, nn = "";
+                ten = $("#txtten").val();
+                lop = $("#lstlop option:selected").val();
+                loai = $("input[type='radio']:checked").val();
+
+                mon = $("#lstmon option:selected").val();
+                mon = mon.substring(2, mon.length);//3,aaa         
+
+                $("input[type='checkbox']:checked").each(function () {
+                    nn += $(this).val();
+                });
+                var check = "<input type='checkbox'>"
+                var trNew = "<tr><td>" + count + "</td><td>" + check + "</td><td>" + ten + "</td><td>" + lop + "</td><td>" + mon + "</td><td>" + nn + "</td><td>" + loai + "</td></tr>"
+                $("#tbl").append(trNew);
+                count++;
+
+
+            })
+            $("#btndel").click(function () {
+                $("#tbl").find("input[type='checkbox']:checked").each(function () {//Tim checkbox nam o dau
+                    if ($(this).is(":checked")) {
+                        $(this).parents("tr").remove();//Xoa tat ca cac phan tu tim duoc co parents la tr
+
+                    }
+                })
+            })
+            $("#lstmon").change(function () {
+                var gt = $("#lstmon option:selected").val();
+                var tc = gt.substr(0, 1);
+                $("#txttc").val(tc);
+            });
+        })
+    </script>
+</head>
+
+<body>
+     <div class="container text-center mt-5 mb-5">
+     <!--Button open Modal -->
+     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#frm">
+            MỞ FORM ĐĂNG KÝ
+        </button>
+    </div> 
+    <div class="container-fluid border">
+        <h2 class="modal-tilte text-info text-center">DANH SÁCH ĐĂNG KÝ MÔN HỌC</h2>
+        <!--table.table table-hover>tr>th*4-->
+        <table class="table table-hover" id="tbl">
+            <tr>
+                <th width=40>STT</th>
+                <th width=60>Chọn</th>
+                <th>Họ tên</th>
+                <th>Lớp</th>
+                <th>Môn học</th>
+                <th>Ngôn ngữ</th>
+                <th>Loại</th>
+                <th>Số tín chi</th>
+            </tr>
+        </table>
+        <input type="button" value="Delete" class="btn btn-danger" id="btndel">
+    </div>
+
+    <!--Modal-->
+    <div id="frm" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-tilte">THÔNG TIN CÁ NHÂN</h2>
+                    <button type="button" data-dismiss="modal" class="close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="container border mt-2 pt-2">
+                        <form action="">
+                            <!--div.form-group*5>lable.col-3+div.col-9>input:text.form-control-->
+                            <div class="row form-group">
+                                <label for="" class="col-3">Họ tên</label>
+                                <div class="col-9">
+                                    <input type="text" name="" id="txtten" class="form-control">
+                                    <div id="ert">(*)</div>
+                                </div>
+                            </div>
+                            
+                            <div class="row form-group">
+                                <label for="" class="col-3">Ngôn ngữ:</label>
+                                <div class="col-9">
+                                    <div class="form-check-inline">
+                                        <label for="" class="form-check-label">
+                                            <input type="checkbox" name="Lang" id="" class="form-check-input"
+                                                value="English">English
+                                            <input type="checkbox" name="Lang" id="" class="form-check-input"
+                                                value="Rome">Rome
+                                            <input type="checkbox" name="Lang" id="" class="form-check-input"
+                                                value="France">France
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <label for="" class="col-3">Lớp</label>
+                                <div class="col-9">
+                                    <!--select.form-control>option*3-->
+                                    <select name="" id="lstlop" class="form-control">
+                                        <option value="DHKTPM15A">DHKTPM15A</option>
+                                        <option value="DHCNTT15B">DHCNTT15B</option>
+                                        <option value="DHHTTT15C">DHHTTT15C</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="" class="col-3">Môn học</label>
+                                <div class="col-9">
+                                    <select name="" id="lstmon" class="form-control">
+                                        <option value="3,HTCNW">Hệ thống công nghệ Web</option>
+                                        <option value="4,LTHSKJava">Lập trình hướng sự kiện java</option>
+                                        <option value="3,sql">Hệ cơ sở dữ liệu</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="" class="col-xs-3 col-md-3">Số tín chỉ:</label>
+                                <div class="col-xs-9 col-md-9" width="30">
+                                    <input type="button" name="" readonly id="txttc" class="btn btn-outline-secondary">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="" class="col-3">Loại:</label>
+                                <!--div.form-check-inline>label.form-check-label>input:radio.form-check-input*2-->
+                                <div class="col-9">
+                                    <div class="form-check-inline">
+                                        <label for="" class="form-check-label">
+                                            <input type="radio" name="loai" id="" class="form-check-input"
+                                                value="Lý thuyết">Lý thuyết
+                                            <input type="radio" name="loai" id="" class="form-check-input"
+                                                value="Thực hành">Thực hành
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <label for="" class="col-3">&nbsp;</label>
+                                <div class="col-9">
+                                    <input type="button" value="Đăng ký" id="btndk" class="btn btn-dark">
+                                </div>
+                            </div>
+                            <div id="tb"></div>
+                            <div id="ktten"></div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+</body>
+
+</html>

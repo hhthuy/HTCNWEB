@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+    html {font-family: Arial, Helvetica, sans-serif;}
+    wrap {width: 60%;}
+    #header-logo {text-align: center;}
+    #header img {width: 300px;height: 60px; }
+#header .slogan {font-family: Arial, Helvetica, sans-serif;letter-spacing: 2px;opacity: 0.8;}
+#header-nav {height: 46px;background-color: rgba(0, 0, 0, 0.63);margin-top: 15px;
+}
+#nav { display: inline-block;}
+#nav > li {display: inline-block;}
+#nav li a {line-height: 47px;padding: 0 10px;text-decoration: none;display: block;font-size: 14px;}
+#nav > li > a {color: #fff;text-transform: uppercase;}
+#nav .subnav li:hover a,
+#nav > li:hover > a {color: #000;background-color: #ccc;}
+#nav .nav-arrow-down {font-size: 10px;
+}
+#header .search-btn {float: right;
+    font-size: 20px;
+    line-height: 47px;
+}
+#header .search-btn ul {
+    display: inline-block;
+}
+#header .search-btn .t-next li {
+    display: inline-block;
+    padding: 0 15px;
+}
+#header .icon {
+    color: #fff;
+}
+#header .search-btn .t-next li:hover {
+    background-color: #f44336;
+}
+#content {
+    width: 100%;
+    display: inline-flex;
+}
+#sidebar {
+    width: 250px;
+    background-color: rgb(243, 242, 242);
+    padding: 0 20px; 
+}
+#sidebar h2 {
+    padding: 10px 0;
+    font-weight: 400;
+}
+#sidebar li {
+    list-style-type: none;
+    line-height: 24px;
+}
+#sidebar li:hover {
+    font-weight: 700;}
+#section {
+    padding: 15px;}
+#section .next {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 550;
+    font-size: 20px;}
+#section .next a {
+    text-decoration: none;
+    color: rgb(164, 238, 149);}
+#section h1 {
+    padding: 15px;}
+.section-first {
+    margin-top: 15px;
+    display: inline-flex;
+    line-height: 40px;}
+.section-first li {
+    list-style-type: none;}
+.section-first li p {
+    opacity: 0.8;}
+#section hr {
+    opacity: 0.4;}
+#section .section-last h1 {
+    font-weight: 500;}
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div id="header-logo">
+                <a href="https://www.w3schools.com/"><img src="../Image/Capture.PNG" alt=""></a>
+                <p class="slogan">THE WORLD'S LARGEST WEB DEVELOPER SITE</p>
+            </div>
+            <div id="header-nav">
+                <ul id="nav">
+                    <li><a href="#"><i class="icon ti-home"></i></a></li>
+                    <li><a href="">html</a></li>
+                    <li><a href="">css</a></li>
+                    <li><a href="">javascript</a></li>
+                    <li><a href="">tutorials<i class="nav-arrow-down ti-angle-down"></i></a></li>
+                    <li><a href="">references <i class="nav-arrow-down ti-angle-down"></i></a></li>
+                    <li><a href="">examples <i class="nav-arrow-down ti-angle-down"></i></a></li>
+                </ul>
+
+                <div class="search-btn">
+                    <ul class="t-next">
+                        <li><i class="icon ti-world"></i></li>
+                        <li><i class="icon ti-search"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="sidebar">
+                <h2>HTML Tutorial</h2>
+                <ul>
+                    <li>HTML HOME</li>
+                    <li>HTML Introduction</li>
+                    <li>HTML Editors</li>
+                    <li>HTML Basic</li>
+                    <li>HTML Element</li>
+                    <li>HTML Attributes</li>
+                    <li>HTML Headings</li>
+                    <li>HTMLParagraphs</li>
+                    <li>HTML Styles</li>
+                    <li>HTML Formatting</li>
+                    <li>HTML Quotations</li>
+                    <li>HTML Computercode</li>
+                    <li>HTML Comments</li>
+                    <li>HTML CSS</li>
+                    <li>HTML Links</li>
+                    <li>HTML Images</li>
+                    <li>HTML Tables</li>
+                    <li>HTML Lists</li>
+                    <li>HTML Blocks</li>
+                </ul>
+            </div>
+            <div id="section">
+                <img src="../Image/Capture.PNG" alt="">
+                <h1>HTML(5) Tutorial</h1>
+                <div class="next">
+                    <a href="#"><i class="ti-angle-double-left"></i>W3School Home</a>
+                    <a href="#">Next page<i class="ti-angle-double-right"></i></a>
+                </div>
+                <div class="section-first">
+                    <li><img src="../Image/Capture2.PNG" alt=""></li>
+                    <li>
+                        <p>With HTML you can create your own Web site.</p>
+                        <p>This tutorial teaches you everything about HTML.</p>
+                        <p>HTMl is easy to learn - You will enjoy it.</p>
+                    </li>
+                </div>
+                <hr>
+                <div class="section-last">
+                    <h1>Examples in Every Chapter</h1>
+                    <p>This HTML tutorial contains hundreds of HTML examples.</p>
+                </div>
+            </div>
+        </div>        
+    </div>
+</body>
+</html>

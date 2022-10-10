@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title> Bai14 </title>
+		<meta charset="utf-8">
+		<meta name="19434551" content="Ho Thi Hong Thuy">
+		<style >
+		.background{
+			color: black;
+			margin-top: 20px;
+			margin-bottom: 50px;
+			margin-right: 350px;
+			margin-left: 350px;
+			border: 10px solid Gainsboro;
+			padding:10px;
+		}
+		
+		</style>
+</head>
+<body>
+<h1 style="color:red;"> Bai 14</h1>
+<div class="background">
+	<label style="font-size:30px;"><b>Contact Us</b></label><br><br>
+<fieldset>	
+	<table>	
+		<legend> Your message:</legend>
+		<tr>
+			<td><label for ="emailTo">To</label></td>
+			<td><input type="text" name="txtTo" id=" emailTo" size="20" maxlength="250" value="Example Cafe"></td>
+		</tr>
+		<tr>
+			<td><label for ="emailForm"> Your email</label></td>
+			<td><input type="text" name="txtForm" id=" emailForm" size="20" maxlength="250"></td>
+		</tr>
+		<tr>
+			<td><label for ="massageBody"> Message</label></td>
+			<td><textarea type="text" name="txtBody" id="massageBody" cols="60" rows="10"></textarea></td>
+		</tr>
+	</table>
+</fieldset>
+<fieldset>
+<table>	
+		<legend> How you found us:</legend>
+		<tr>
+			<td><label for="browser">How did you hear of us?</label></td>
+			<td>
+				<input list="browsers" name="browser" id="browser">
+				<datalist id="browsers">
+				<option value="Google">
+				<option value="Facebook">
+				<option value="Instagram">
+				<option value="Twitter">
+				<option value="Other">
+				</datalist>
+			</td>
+		</tr>
+		<tr>
+			<td><label for ="newsLetter"> Newsletters</label></td>
+			<td><input type="checkbox" id="newsLetter" name="newsLetter">
+            <label for="newsLetter"> Ensure this box is checked if you would like to receive email updates</label>
+			</td>
+		</tr>
+		</table>
+</fieldset>
+		<input type="submit" value="Send message"><br>
+	
+</div>
+</body>
+</html>

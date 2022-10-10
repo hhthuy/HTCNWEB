@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title> Bai14 </title>
+		<meta charset="utf-8">
+		<meta name="19434551" content="Ho Thi Hong Thuy">
+		<style >
+		.background{
+			color: black;
+			margin-top: 20px;
+			margin-bottom: 50px;
+			margin-right: 320px;
+			margin-left: 320px;
+			border: 10px solid Gainsboro;
+		}
+		
+		</style>
+</head>
+<body> 
+	
+<h1 style="color:rgb(206, 194, 194);"> Bai 14</h1>
+<div class="background">
+	<table>
+		<tr>
+			<label style="font-size:30px;"><b>Contact Us</b></label><br><br>
+			<label>Use the following form to send a message to Example Cafe</label><br><br>
+		</tr>
+		<tr>
+			<td><label for ="emailForm"> Your email:</label></td>
+			<td><input type="text" name="txtEmail" id=" emailForm" size="20" maxlength="250"></td>
+		</tr>
+		<tr>
+			<td><label for ="massageBody"> Message</label></td>
+			<td><textarea type="text" name="txtBody" id="massageBody" cols="50" rows="10"></textarea></td>
+		</tr>
+		<tr>
+			<td><label for="browser">How did you hear of us?</label></td>
+			<td>
+				<input list="browsers" name="browser" id="browser">
+				<datalist id="browsers">
+				<option value="Google" selected>
+				<option value="Facebook">
+				<option value="Instagram">
+				<option value="Twitter">
+				<option value="Other">
+				</datalist>
+			</td>
+		</tr>
+		<tr>
+			<td><label for ="newsLetter"> Newsletters</label></td>
+			<td><input type="checkbox" id="newsLetter" name="newsLetter">
+            <label for="newsLetter"> Ensure this box is checked if you would like to receive email updates</label></td>
+		</tr>
+		<tr>
+			<td><input type="submit" value="Send message"></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

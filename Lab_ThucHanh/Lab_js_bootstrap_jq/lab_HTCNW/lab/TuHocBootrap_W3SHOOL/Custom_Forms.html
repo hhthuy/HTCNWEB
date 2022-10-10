@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+  </script>
+</head>
+
+<body>
+
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-4">
+        <h2 class="text-danger">Custom Checkbox</h2>
+        <form>
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+            <label class="custom-control-label" for="customCheck">Custom checkbox</label>
+          </div>
+          <input type="checkbox" id="defaultCheck" name="example2">
+          <label for="defaultCheck">Default checkbox</label>
+        </form>
+      </div>
+      <div class="col-4">
+        <h2 class="text-danger">Custom Radio Buttons</h2>
+        <form>
+          <!-- <div class="custom-control custom-radio custom-control-inline"> -->
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="customRadio" name="example1">
+            <label class="custom-control-label" for="customRadio">Custom radio</label>
+          </div>
+          <input type="radio" id="defaultRadio" name="example2">
+          <label for="defaultRadio">Default radio</label>
+        </form>
+      </div>
+      <div class="col-4">
+        <h2 class="text-danger">Custom Switch</h2>
+        <form>
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+            <label class="custom-control-label" for="switch1">Toggle me</label>
+          </div>
+        </form>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <div class="row">
+      <div class="col-6">
+        <h2 class="text-danger">Custom Select Menu</h2>
+        <form action="/action_page.php">
+          <select name="cars" class="custom-select mb-3">
+            <option selected>Custom Select Menu</option>
+            <option value="volvo">Volvo</option>
+            <option value="fiat">Fiat</option>
+          </select>
+        </form>
+        <h2 class="text-danger">Custom Select Menu Sizing</h2>
+        <form>
+          <select class="custom-select custom-select-sm mb-3">
+            <option selected>Small Custom Select Menu</option>
+            <option value="volvo">Volvo</option>
+          </select>
+          <select name="cars" class="custom-select mb-3">
+            <option selected>Default Custom Select Menu</option>
+            <option value="volvo">Volvo</option>
+          </select>
+          <select name="cars" class="custom-select custom-select-lg mb-3">
+            <option selected>Large Custom Select Menu</option>
+            <option value="volvo">Volvo</option>
+          </select>
+        </form>
+      </div>
+      <div class="col-6">
+        <h2 class="text-danger">Custom Range</h2>
+        <form>
+          <label for="customRange">Custom range</label>
+          <input type="range" class="custom-range" id="customRange" name="points1">
+          <label for="defaultRange">Default range</label>
+          <input type="range" id="defaultRange" name="points2">
+        </form>
+        <h2 class="text-danger">Custom File</h2>
+        <form>
+          <p>Custom file:</p>
+          <div class="custom-file mb-3">
+            <input type="file" class="custom-file-input" id="customFile" name="filename">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+          </div>
+          <p>Default file:</p>
+          <input type="file" id="myFile" name="filename2">
+        </form>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

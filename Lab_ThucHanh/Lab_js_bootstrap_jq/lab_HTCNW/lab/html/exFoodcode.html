@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Code</title>
+    <meta name="19434551" content="Hồ Thị Hồng Thủy">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/index.js"></script>
+</head>
+<body>
+    <!--Tao layout trang-->
+    <div class="container">
+        <!--Tao Header trang-->
+        <div class="col-xs-12" style="margin-top:10px;">
+            <nav class="navbar navbar-collapse">
+                <a href="http://bactom.com">
+                    <img src="../img/Banner.png" alt="" width="100%">
+                </a>
+            </nav>
+        </div>
+        <!--Tao menu-->
+        <div class="col-xs-12">
+            <nav class="navbar navbar-collapse">
+                <ul class="nav nav-pills">
+                    <li><a href="Home.html">HOME</a></li>
+                    <li><a href="#">SHOP</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">ARTICLE</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVICES <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" id="myBtn">Online</a></li>
+                            <li><a href="#" id="myBtn1">Offline</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!---= content LEFT-RIGHT-->
+        <div class="col-xs-12">
+            <section class="col-xs-3">
+                <img src="../img/left.png" alt="" width=100%/>
+            </section>
+            <aside class="col-xs-9">
+                <h2 class="text-left">Customer order list</h2>
+                <table class="table table-striped" role="table" id="table">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Delivery Date</th>
+                        <th>Email</th>
+                        <th>Telephone Number</th>
+                    </tr>
+                </table>
+            </aside>
+        </div>
+        <!--Tao footer-->
+        <p class="modal-footer text-left text-success" style="text-align:left">
+            &copy;2019-SE-FIT.ALL RIGHTS RESERVED
+        </p>
+    </div>
+    <!--Tao Modal-->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-tille text-center">Customer Infomation</h2>
+                </div>
+
+                <div class="modal-body">
+                    <form class="form-horizontial">
+                        <label for="" class="control-lable col-xs-3">Customer name</label>
+
+                        <div class="col-xs-9">
+                            <input type="text" name="name" id="txtName" class="form-control" placeholder="Your name">
+                            <span id="tbName" class="text-danger">*</span>
+                        </div>
+
+
+
+                        <label for="" class="control-lable col-xs-3">Address</label>
+                        <div class="col-xs-9">
+                            <input type="text" name="" id="txtAdd" class="form-control" placeholder="Your address">
+                            <span id="tbAdd" class="text-danger">*</span>
+                        </div>
+
+                        <label for="" class="control-lable col-xs-3">Delivery date</label>
+                        <div class="col-xs-9">
+                            <input type="date" name="" id="txtDe" class="form-control">
+                            <span id="tbDe" class="text-danger">*</span>
+                        </div>
+
+                        <label for="" class="control-lable col-xs-3">Email</label>
+                        <div class="col-xs-9">
+                            <input type="email" name="" id="txtMail" class="form-control" placeholder="Your email">
+                            <span id="tbMail" class="text-danger">*</span>
+                        </div>
+
+                        <label for="" class="control-lable col-xs-3">Telephone number</label>
+                        <div class="col-xs-9">
+                            <input type="text" name="" id="txtPhone" class="form-control" placeholder="Your phone">
+                            <span id="tbPhone" class="text-danger">*</span>
+                        </div>
+                        <button type="button" id="btnSave" class="btn btn-success btn-group-justified">Save</button><br>
+                        <button type="reset" class="btn btn-primary">Reset</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

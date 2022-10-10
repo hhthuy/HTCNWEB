@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\OnThiCK_TH"
+		},
+		{
+			"path": "..\\..\\Lab_js_bootstrap_jq"
+		},
+		{
+			"path": "..\\..\\ThiCK_HK4_2020-2021"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "OnThiCK_TH"
+	}
+}

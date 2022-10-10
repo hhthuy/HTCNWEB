@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex19-Đăng ký Môn học</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //Kiem tra ten
+            function ktten() {
+                var regten = /^([A-Z]{1}[a-z]*\s)*([A-Z]{1}[a-z]*)$/;
+                var ten = $("#txtten").val();
+                if (regten.test(ten)) {//Kiem tra dl nhap vao
+                    $("#ert").html("Tên đúng định dạng.");
+                    $("#tb").html("(*)");
+                    return true;
+                } else {
+                    $("#ert").html("Tên nhập sai!!");
+                    return false;
+                }
+            }
+            $("#txtten").blur(ktten);
+
+            //Đưa dữ liệu vào table
+            var count = 1;
+            $("#btndk").click(function () {
+                if (ktten == false) {
+                    $("#tb").html("Điền thông tin chưa đầy đủ");
+                    return flase;
+                }
+                var nn = "";
+                var tendn = $("#txttendn").val();
+                var mk =$("#txtmk").val();
+                var nlmk = $('#txtnlmk').val();
+                var ten = $("#txtten").val();
+                var ngayS=$("#txtns").val();
+                var ngayTG =$("#txtns").val();
+                var dc =$("#txtDC").val();
+                var sdt =$("#txtsdt").val();
+                var mail =$("#txtemail").val();
+                var lop = $("#lstlop option:selected").val();
+                var loai = $("input[type='radio']:checked").val();
+                var mon = $("#lstmon option:selected").val(); 
+                mon = mon.substring(2, mon.length);//3,aaa         
+
+                $("input[type='checkbox']:checked").each(function () {nn += $(this).val();});
+                var tc = $("#lstmon option:selected").val();
+
+                var check = "<input type='checkbox'>"
+                var trNew = "<tr><td>" + count + "</td><td>" + check + "</td><td>" + tendn + "</td><td>" + mk + "</td><td>" + nlmk + "</td><td>" + ten+ "</td><td>" + ngayS + "</td><td>" + ngayTG + "</td><td>" + dc + "</td><td>" + sdt + "</td><td>" + mail + "</td><td>" + lop + "</td><td>" + mon + "</td><td>" + nn + "</td><td>" + loai + "</td><td>" + tc + "</td></tr>"
+                $("#tbl").append(trNew);
+                count++;
+
+            })
+            $("#btndel").click(function () {
+                $("#tbl").find("input[type='checkbox']:checked").each(function () {//Tim checkbox nam o dau
+                    if ($(this).is(":checked")) {
+                        $(this).parents("tr").remove();//Xoa tat ca cac phan tu tim duoc co parents la tr
+
+                    }
+                })
+            })
+            $("#lstmon").change(function () {
+                var gt = $("#lstmon option:selected").val();
+                var tc = gt.substr(0, 1);
+                $("#txttc").val(tc);
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-danger text-center">ĐĂNG KÝ MÔN HỌC</h2><hr>
+		<form action="">
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="Tên Đăng Nhập">Tên đăng nhập</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" name="" id="txttendn" placeholder="Tên đăng nhập" class="form-control">
+                    <div id="ertendn">(*)</div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="Mật khẩu">Mật khẩu</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" id="txtmk" placeholder="Nhập vào mật khẩu"></input>
+                    <div id="ermk">(*)</div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="Mật khẩu">Nhập lại mật khẩu</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" id="txtnlmk"
+                        placeholder="Nhập vào xác nhận mật khẩu"></input>
+                    <div id="ernlmk">(*)</div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <h4 class="text-center text-danger"><strong>THÔNG TIN CÁ NHÂN</strong></h4>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="Họ và tên">Họ và tên</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" name="" id="txtten" placeholder="Nhập vào họ tên" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-3">Ngày sinh</div>
+                <div class="col-9">
+                    <input type="date" name="" id="txtns" class="form-control">
+                    <div id="erns">(*)</div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-3">Ngày tham gia</div>
+                <div class="col-9">
+                    <input type="date" name="" id="txtntg" class="form-control">
+                    <div id="erntg">(*)</div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="Địa chỉ">Địa chỉ</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" name="" id="txtDC" placeholder="Nhập vào địa chỉ" class="form-control">
+                    <div id="erdc">(*)</div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="Địa chỉ">Điện thoại</label>
+                </div>
+                <div class="col-9">
+                    <input type="tel" name="" id="txtsdt" placeholder="Nhập vào SDT(9-10 số)"
+                        class="form-control">
+                    <div id="ersdt">(*)</div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="Địa chỉ">Email</label>
+                </div>
+                <div class="col-9">
+                    <input type="email" name="" id="txtMail"
+                        placeholder="Nhập vào email dạng: ten@tencongty.com" class="form-control">
+                    <div id="ermail">(*)</div>
+                </div>
+            </div>
+			<div class="row form-group">
+				<label for="" class="col-3">Ngôn ngữ:</label>
+				<div class="col-9">
+					<div class="form-check-inline">
+						<label for="" class="form-check-label">
+							<input type="checkbox" name="Lang" id="" class="form-check-input"
+								value="English">English
+							<input type="checkbox" name="Lang" id="" class="form-check-input"
+								value="Rome">Rome
+							<input type="checkbox" name="Lang" id="" class="form-check-input"
+								value="France">France
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<label for="" class="col-3">Lớp</label>
+				<div class="col-9">
+					<!--select.form-control>option*3-->
+					<select name="" id="lstlop" class="form-control">
+						<option value="DHKTPM15A">DHKTPM15A</option>
+						<option value="DHCNTT15B">DHCNTT15B</option>
+						<option value="DHHTTT15C">DHHTTT15C</option>
+					</select>
+				</div>
+			</div>
+			<div class="row form-group">
+				<label for="" class="col-3">Môn học</label>
+				<div class="col-9">
+					<select name="" id="lstmon" class="form-control">
+						<option value="3,HTCNW">Hệ thống công nghệ Web</option>
+						<option value="4,LTHSKJava">Lập trình hướng sự kiện java</option>
+						<option value="3,sql">Hệ cơ sở dữ liệu</option>
+					</select>
+				</div>
+			</div>
+			<div class="row form-group">
+				<label for="" class="col-xs-3 col-md-3">Số tín chỉ:</label>
+				<div class="col-xs-9 col-md-9" width="30">
+					<input type="button" name="" readonly id="txttc" class="btn btn-outline-secondary">
+				</div>
+			</div>
+			<div class="row form-group">
+				<label for="" class="col-3">Loại:</label>
+				<!--div.form-check-inline>label.form-check-label>input:radio.form-check-input*2-->
+				<div class="col-9">
+					<div class="form-check-inline">
+						<label for="" class="form-check-label">
+							<input type="radio" name="loai" id="" class="form-check-input"
+								value="Lý thuyết">Lý thuyết
+							<input type="radio" name="loai" id="" class="form-check-input"
+								value="Thực hành">Thực hành
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<label for="" class="col-3">&nbsp;</label>
+				<div class="col-9">
+					<input type="button" value="Đăng ký" id="btndk" class="btn btn-info">
+				</div>
+			</div>
+			<div id="tb"></div>
+			<div id="ktten"></div>
+		</form>
+	</div>
+    <div class="container-fluid border">
+        <!--table.table table-hover>tr>th*4-->
+        <table class="table table-hover" id="tbl">
+            <tr>
+                <th width=40>STT</th>
+                <th width=60>Chọn</th>
+                <th>Tên đăng nhập</th>
+                <th>Mật khẩu</th>
+                <th>Xác nhận mk</th>
+                <th>Ngày sinh</th>
+                <th>Ngày Tham gia</th>
+                <th>Địa chỉ</th>
+                <th>Diện thoại</th>
+                <th>Email</th>
+                <th>Lớp</th>
+                <th>Môn học</th>
+                <th>Ngôn ngữ</th>
+                <th>Loại</th>
+                <th>Số tín chi</th>
+            </tr>
+        </table>
+        <input type="button" value="Delete" class="btn btn-danger" id="btndel">
+    </div>
+</body>
+
+</html>

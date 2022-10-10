@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 19</title>
+    <meta name="19434551" content="Ho Thi Hong Thuy">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header {
+    margin-top: 8px;
+}
+
+#nav, .subnav {
+    list-style-type: none;
+}
+
+#nav li {
+    position: relative;
+}
+
+#nav > li {
+    display: inline-block;
+    background-color: #2F3036;
+    width: 150px;
+}
+
+#nav li a {
+    text-decoration: none;
+    line-height: 47px;
+    display: block;
+}
+
+#nav > li > a {
+    color: #fff;
+    padding: 4px;
+}
+
+#nav .subnav {
+    display: none;
+    position: absolute;
+    background-color: #F3F3F3;
+    line-height: 38px;
+    min-width: 250px;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+#nav .subnav li a {
+    color: #000;
+    padding: 0 24px;
+}
+
+#nav .subnav li:hover a {
+    color: #fff;
+    background-color: #19C589;
+}
+
+#nav > li:hover {
+    background-color: #90EE90;
+}
+
+#nav li:hover .subnav {
+    display: block;
+}
+    </style>
+</head>
+<body>
+    <div id="header">
+        <ul id="nav">
+            <li><a href="#">Home</a></li>
+            <li>
+                <a href="#">Introdution >></a>
+                <ul class="subnav">
+                    <li><a href="#">Hello</a></li>
+                    <li><a href="#">Haha</a></li>
+                    <li><a href="#">HoHo</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio >></a>
+                <ul class="subnav">
+                    <li><a href="#">Photography</a></li>
+                    <li><a href="#">Web & User Interface Design</a></li>
+                    <li><a href="#">LLLustration</a></li>
+                </ul>
+            </li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</body>
+</html>

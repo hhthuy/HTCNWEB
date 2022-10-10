@@ -1,0 +1,79 @@
+<!-- // TEN: Chu Hoa dau tu
+// var re = /^([A-Z]{1}[a-z]*\s)*([A-Z]{1}[a-z]*){1}$/;
+// SO AO: Dùng chữ số (số nguyên từ 1 đến 100) 
+// var re = /^(([0-9]{1,2})|100)$/;
+// SDT:
+// var re = /^(0)[0-9]{3}-\d{3}-\d{3}$/; //Dang: 0xxx-xxx-xxx 
+// var re = /^(090)-\d{4}-\d{3}$/; //Dang: 090-xxxx-xxx
+// var re = /^03\\d{8}$/; //Dang: 03xxxxxxxx 
+// var re = /^(09|03|07|08|05)+([0-9]{8})$/;
+// var re =/^[0-9]{3}\-\d{4}\-\d{3}$/; (dang:0000-000-000)
+// CMND:9 chữ số
+// var re = /^[0-9]{9}$/
+// MA:
+// var re = /^[0-9]{8}$/; //12345678
+// var re = /^[A-Z]{3}-[A-Z]{3}-[0-9]{2}-[0-9]{4}$/; // Dang:XXX-XXX-mm-yyyy
+// var re =[A-Za-z0-9]{7}\\d{3}$ //A2BCDEF111
+// DIA CHI:Dùng chữ hoa,
+// var re = /^[A-Z]{1,}$/
+// var re = /^([A-Za-z0-9\s])*$/;
+// var re =/^\s*[a-zA-Z0-9,\s]+\s*$/;
+// EMAIL: 
+// Dang: xxxxxx@iuh.edu.vn
+// var re = /^\w+([\.-]?\w+)*@iuh.edu.vn$/; 
+// Dang:abc@gmail.com
+//  var re = /^[a-zA-Z0-9.\_\-]+@([a-zA-Z0-9])+.\w{3}$/;
+// MAT KHAU:
+//  var re = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@#$_-]+).{6,}$/; //Dang: //123@aqw
+// var re = /^[A-Za-z0-9]{6,}$/;//Dang: AAdd123
+// TUA DE:nhiều từ ngăn cách bằng khoảng trắng co(')
+// [a-zA-Z' ]+
+// NGAY SAU NGAY HIEN TAI 7 NGAY
+//   function kiemtraNgay() {
+//                 var ngayTT = $("#txtNgayTT").val();
+//                 if (ngayTT == "") {
+//                     $("#tbNgayTT").html("Bat buoc");
+//                     return false;
+//                 }
+//                 var day = new Date($("#txtNgayTT").val());
+//                 var today = new Date();
+//                 today.setDate(today.getDate() + 7);
+//                 if (day < today) {
+//                     $("#tbNgayTT").html("Phải sau ngày hiện hành 7 ngày!");
+//                     return false;
+//                 }
+//                 $("#tbNgayTT").html("<br>");
+//                 return true;
+//             }
+//             $("#txtNgayTT").blur(kiemtraNgay);
+// NAM SINH <=200
+//             function kiemtraNamSinh() {
+//                 var ngaysinh = $("#txtNS").val();
+//                 if (ngaysinh == "") {
+//                     $("#tbNS").html("Không được để trống!");
+//                     return false;
+//                 }
+//                 var ns = new Date($("#txtNS").val());
+//                 var cur = new Date();
+//                 if (!(ns.getFullYear() <= 2002)) {
+//                     $("#tbNS").html("Năm sinh <= 2002");
+//                     return false;
+//                 }
+//                 $("#tbNS").html("<br>");
+//                 return true;
+//             } $("#txtNS").blur(kiemtraNamSinh);
+// //GIA > 0
+// function KiemTraGiaTour() {
+//                 var gia = $("#txtGia").val();
+//                 if (gia == "") {
+//                     $("#tbGia").html("Không được bỏ trống!!!");
+//                     return false;
+//                 }
+//                 if (gia < 0) {
+//                     $("#tbGia").html("Phải sau lớn hơn 0!");
+//                     return false;
+//                 }
+//                 $("#tbGia").html("<br>");
+//                 return true;
+//             }
+//             $("#txtGia").blur(KiemTraGiaTour); -->

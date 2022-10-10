@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex19-Đăng ký Môn học</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        div #main { border-left: 1px solid black;}
+
+        div #ll,#sdt,#dc { color: red;}
+    </style>
+    <script>
+        $(document).ready(function () {
+            function ktll() {
+                var ll = document.getElementById('txtll').value;
+                var regll = /^([A-Z]{1})([A-Za-z0-9])*$/;
+                if (regll.test(ll)) {
+                    document.getElementById('ll').innerHTML = "(*)";
+                    return true;
+                } else {
+                    document.getElementById('ll').innerHTML = "Thông tin sai !!!";
+                    return false;
+                }
+            }
+
+            $("#txtkh").change(function () {
+                var kh = $("#txtkh option:selected").val();
+                var dg = kh.substr(0, 5);
+                $("#txtdg").val(dg);
+            })
+            $("#txtll").blur(ktll)
+            //   var ll=$(this).val();
+            // var regll=/^([A-Z]{1})([A-Za-z0-9])*$/;
+            //if(regll.test(ll))
+            //{
+            //   $("#ll").html("(*)");
+            //     return true;
+            //}else{
+            //  $("#ll").html("Thông tin chưa đúng!");
+            //return false;
+            // }
+            //})
+            $("#txtsdt").blur(function () {
+                var dt = $(this).val();
+                var regdt = /^([0-9]){10}$/;
+                if (regdt.test(dt)) {
+                    $("#sdt").html("(*)");
+                    return true;
+                } else {
+                    $("#sdt").html("SĐT không đúng. Phải gồm 10 số!!!");
+                    return false;
+                }
+            })
+            $("#txtdc").blur(function () {
+                var dc = $(this).val();
+                var regdc = /^([A-Za-z0-9\s])*$/;
+                if (regdc.test(dc)) {
+                    $("#dc").html("(*)");
+                    return true;
+                } else {
+                    $("#dc").html("Địa chỉ không đúng!");
+                    return false;
+                }
+            })
+            var count = 1;
+
+
+            $("#luu").click(function () {
+                var kh, db, ll, dc, dg, ht, khc, tt;
+                if (ktll() == false) {
+                    $("#tb").html("Nhập thông tin chưa đầy đủ!!!");
+                    return false;
+                } else {
+                    $("#tb").html("Ok em!")
+                }
+
+                kh = $("#txtkh option:selected").val();
+                khc = kh.substr(6, 13)
+                db = $("input[type='checkbox']:checked").val();
+                ll = $("#txtll").val();
+                dc = $("#txtdc").val();
+                dg = $("#txtdg").val();
+                ht = $("input[type='radio']:checked").val();
+
+
+                var check = "<input type='checkbox'>";
+
+                var trnew = "<tr><td>" + count + "</td><td>" + check + "</td><td>" + db + "</td><td>" + khc + "</td><td>" + ll + "</td><td>" + dc + "</td><td>" + dg + "</td><td>" + ht + "</td></tr>";
+                $("#tbl").append(trnew);
+                count++;
+            })
+            $("#btndel").click(function () {
+                $("#tbl").find("input[type='checkbox']:checked").each(function () {
+                    if ($(this).is(":checked")) {
+                        $(this).parents("tr").remove();
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container text-center mt-5 mb-5">
+        <!--Button open Modal -->
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#frm">
+            MỞ FORM ĐĂNG KÝ
+        </button>
+    </div>
+    <div class="container-fluid border">
+        <h2 class="text-center text-warning">DANH SÁCH ĐĂNG KÝ MUA BÁO</h2>
+        <table class="table table-hover" id="tbl">
+            <tr>
+                <th>STT</th>
+                <th>Chọn</th>
+                <th>Dat bao</th>
+                <th>Ky han</th>
+                <th>Thông tin lien lac</th>
+                <th>Dia chi nhan bao</th>
+                <th>Tong thanh tien</th>
+                <th>Hình thức chuyen khoan</th>
+            </tr>
+        </table>
+        <input type="button" name="" id="btndel" class="btn btn-danger" value="Delete" style="width: 100px;">
+    </div>
+
+    <!--Modal-->
+    <div id="frm" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-tilte text-info text-center">DANG KY MUA BAO ONLINE</h2>
+                    <button type="button" data-dismiss="modal" class="close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontial" role="form">
+                        <label class="col-12">Đăng ký báo</label>
+                        <div class="col-12">
+                            <input type="checkbox" name="bao" id="txtdb" class="form-check-input"
+                                value="Tuoi tre hang ngay">Tuoi tre hang ngay
+                            <input type="checkbox" name="bao" id="txtdb1" class="form-check-input"
+                                value="Tuoi tre cuoi">Tuoi tre cuoi
+                            <input type="checkbox" name="bao" id="txtdb2" class="form-check-input"
+                                value="Tuoi tre chu nhat">Tuoi tre chu nhat
+                        </div>
+
+                        <label class="col-12">Ky han</label>
+                        <select name="" id="txtkh" class="form-control bg-white col-12">
+                            <option value="30000:3tháng">3 tháng</option>
+                            <option value="50000:6tháng">6 tháng</option>
+                            <option value="80000:1năm">1 năm</option>
+                        </select>
+
+
+                        <label class="col-12">Đon gia</label>
+                        <div class="col-12 form-group"><input type="text" id="txtdg" class="form-control" value=""
+                                readonly>
+                        </div>
+
+
+                        <label class="col-12">Thong tin lien lac</label>
+                        <div class="ol-12 form-group"><input type="text" class="form-control" id="txtll"></div>
+                        <div id="ll">(*)</div>
+
+
+                        <label class="col-12">So dien thoai</label>
+                        <div class="col-12 form-group"><input type="text" class="form-control" id="txtsdt">
+                        </div>
+                        <div id="sdt">(*)</div>
+
+
+                        <label class="col-12">Dia chi nhan bao</label>
+                        <div class="col-12 form-group"><input type="text" class="form-control" id="txtdc"></div>
+                        <div id="dc">(*)</div>
+
+                        <label class="col-12">Hinh thuc thanh toan</label>
+                        <div class="col-12">
+                            <input type="radio" name="loai" id="txtht" class="form-check-input"
+                                value="Chuyen khoan">Chuyển
+                            khoan
+                            <input type="radio" name="loai" id="txtht" class="form-check-input" value="Tien mat">Tien
+                            mat
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" value="Datbao" class="btn btn-info" style="width:80px;" id="luu">
+                  
+                    <div id="tb">....</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

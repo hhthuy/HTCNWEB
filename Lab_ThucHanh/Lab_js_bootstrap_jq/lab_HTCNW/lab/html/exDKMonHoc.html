@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>OnTap 3</title>
+	<meta name="19434551" content="Hồ Thị Hồng Thủy">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/index.js"></script>
+	<script>
+		$(document).ready(function () {
+
+			//KT HO TEN
+			function ktten() {
+				var ten = $("#txtten").val();
+				var re = /^([A-Z]{1}[a-z]*\s)*([A-Z]{1}[a-z]*){1}$/;
+				if (ten == "") {
+					$("#tbten").html("Không được bỏ trống");
+					return false;
+				}
+				if (!re.test(ten)) {
+					$("#tbten").html("Tên phải nhập chữ hoa đầu tiên!");
+					return false;
+				}
+				$("#tbten").html("<br>");
+				return true;
+			}
+			$("#txtten").blur(ktten);
+			//KT MAT KHAU(chữ,số,ký tự đặc biệt, nằm vị trí bất kỳ và tối thiểu là 6)
+			function ktMatKhau() {
+				var mk = $("#txtmk").val();
+				var re = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@#$_-]+).{6,}$/;
+				if (mk == "") {
+					$("#tbmk").html("Không được bỏ trống");
+					return false;
+				}
+				if (!re.test(mk)) {
+					$("#tbmk").html("MK tối thiểu là 6 ký tự gồm chữ,số,ký tự đặc biệt, nằm vị trí bất kỳ!");
+					return false;
+				}
+				$("#tbmk").html("<br>");
+				return true;
+			}
+			$("#txtmk").blur(ktMatKhau);
+
+			//KT NHAP LAI MAT KHAU
+			function ktNLMatKhau() {
+				var mk = $("#txtmk").val();
+				var nlmk = $("#txtnlmk").val();
+				if (nlmk == "") {
+					$("#tbnlmk").html("Không được bỏ trống");
+					return false;
+				}
+				if (mk != nlmk) {
+					$("#tbnlmk").html("Nhập lại mật khẩu phải trùng với mật khẩu!!!");
+					return false;
+				} $("#tbnlmk").html("<br>");
+				return true;
+
+			}
+			$("#txtnlmk").blur(ktNLMatKhau);
+
+			//KT NGAY SINH (Năm sinh < 2000)
+			function ktNamSinh() {
+				var ns = new Date($(this).val());
+				var cur = new Date();
+				if (ns == "") {
+					$("#tbns").html("Không được bỏ trống");
+					return false;
+				}
+				if (!(ns.getFullYear() <= 2002)) {
+					$("#tbns").html("Năm sinh <=2002");
+					return false;
+				} $("#tbns").html("<br>");
+				return true;
+			}
+			$("#txtns").blur(ktNamSinh);
+			//KT NGAY THAM GIA
+			function KiemTraNgay() {
+				var ngay = $("#txtntg").val();
+				if (ngay == "") {
+					$("#tbntg").html("Không được để trống");
+					return false;
+				}
+				var day = new Date($("#txtntg").val());
+				var today = new Date();
+				today.setDate(today.getDate() + 3);
+				if (day < today) {
+					$("#tbntg").html("Phải sau ngày hiện hành 3 ngày!");
+					return false;
+				}
+				$("#tbntg").html("<br>");
+				return true;
+			}
+			$("#txtntg").blur(KiemTraNgay);
+			//kt SDT
+			function ktSDT() {
+				var sdt = $(this).val();
+				var re = /^[0-9]{9,10}$/;//var regsdt=/^03\\d{8}$/
+				///^[0-9]{3}\-\d{4}\-\d{3}$/; (dang:0000-000-000)
+				if (sdt == "") {
+					$("#tbsdt").html("Không được bỏ trống");
+					return false;
+				}
+				if (!re.test(sdt)) {
+					$("#tbsdt").html("SDT[9-10]");
+					return false;
+				} $("#tbsdt").html("<br>");
+				return true;
+			}
+			$("#txtsdt").blur(ktSDT);
+			////Email
+			function ktEmail()  {
+				var mail = $(this).val();
+				var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+				if (mail == "") {
+					$("#tbmail").html("Không được bỏ trống");
+					return false;
+				}
+				if (!re.test(mail)) {
+					$("#tbmail").html("Địa chỉ email không đúng!Nhập lại!!!");
+					return false;
+				} $("#tbmail").html("<br>");
+				return true;
+			}$("#txtmail").blur(ktEmail);
+
+			//Đưa dữ liệu vào table
+			var count = 1;
+			$("#btndk").click(function () {
+				var chon = "<input type='checkbox'>"
+				var tendn = $("#txttendn").val();
+				var mk = $("#txtmk").val();
+				var nlmk = $('#txtnlmk').val();
+				var ten = $("#txtten").val();
+				var ngayS = $("#txtns").val();
+				var ngayTG = $("#txt").val();
+				var dc = $("#txtDC").val();
+				var sdt = $("#txtsdt").val();
+				var mail = $("#txtemail").val();
+				var lop = $("#lstlop option:selected").val();
+				var loai = $("input[type='radio']:checked").val();
+
+				var mon = $("#lstmon option:selected").val();
+				mon = mon.substring(2, mon.length);//3,aaa   
+				var tc = $("#lstmon option:selected").val();
+
+				var anh = ($("#txtAnh").val()).lastIndexOf('\\');
+				var nn = "";
+				$("input[type='checkbox']:checked").each(function () { nn += $(this).val(); });
+
+				var newRow = "<tr><td>" + count + "</td><td>" + chon + "</td><td>" + tendn + "</td><td>" + mk + "</td><td>" + nlmk + "</td><td>" + ten + "</td><td>" + ngayS + "</td><td>" + ngayTG + "</td><td>" + dc + "</td><td>" + sdt + "</td><td>" + mail + "</td><td>" + lop + "</td><td>" + mon + "</td><td>" + nn + "</td><td>" + loai + "</td><td>" + tc + "</td><td>" + ($("#txtAnh").val()).slice(anh + 1) + "</td></tr>"
+				$("#table").append(newRow);
+				// count++;
+			})
+			$("#lstmon").change(function () {
+				var gt = $("#lstmon option:selected").val();
+				var tc = gt.substr(0, 1);
+				$("#txttc").val(tc);
+			});
+
+			//DELETE
+			$("#btndel").click(function () {
+				$("#table").find("input[type='checkbox']:checked").each(function () {//Tim checkbox nam o dau
+					if ($(this).is(":checked")) {
+						$(this).parents("tr").remove();
+
+					}
+				})
+			})
+
+		})
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="col-xs-12" style="margin-top:10px;">
+			<nav class="navbar navbar-collapse">
+				<img src="../img/BannerDKMH.PNG " alt="" width="100%" height="10%">
+			</nav>
+		</div>
+		<div class="col-xs-12 ">
+			<nav class="navbar bg-info">
+				<ul class="nav navbar-nav">
+					<li><a href="Trangchu.html">TRANG CHỦ</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">HOẠT ĐỘNG<span
+								class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#" id="myBtn">Online</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<!---= content LEFT-RIGHT-->
+		<div class="col-xs-12">
+			<h2 class="text-center text-warning">DANH SÁCH SINH VIÊN ĐĂNG KÝ</h2>
+			<table class="table table-hover" id="table">
+				<tr>
+					<th width=40>STT</th>
+					<th width=60>Chọn</th>
+					<th>Tên đăng nhập</th>
+					<th>Mật khẩu</th>
+					<th>Xác nhận mk</th>
+					<th>Ảnh</th>
+					<th>Họ tên</th>
+					<th>Ngày sinh</th>
+					<th>Ngày Tham gia</th>
+					<th>Địa chỉ</th>
+					<th>Diện thoại</th>
+					<th>Email</th>
+					<th>Lớp</th>
+					<th>Môn học</th>
+					<th>Ngôn ngữ</th>
+					<th>Loại</th>
+					<th>Số tín chi</th>
+
+				</tr>
+			</table>
+			<input type="button" value="Delete" class="btn btn-danger" id="btndel">
+		</div>
+		<!--Tao footer-->
+		<p class="modal-footer text-left text-success" style="text-align:left">
+			&copy;2019-SE-FIT.ALL RIGHTS RESERVED
+		</p>
+	</div>
+	<!--Tao Modal-->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-tille text-center text-danger">ĐĂNG KÝ MÔN HỌC</h2>
+				</div>
+				<div class="modal-body">
+					<form action="" class="form-horizontical">
+						<label for="" class="control-label col-xs-3">Tên đăng nhập</label>
+						<div class="col-xs-9">
+							<input type="text" name="" id="txttendn" class="form-control"></input>
+							<span class="text-danger" id="txttendn">*</span>
+						</div>
+
+						<label for="" class="control-label col-xs-3">Mật khẩu</label>
+						<div class="col-xs-9">
+							<input type="text" name="" id="txtmk" class="form-control"></input>
+							<span class="text-danger" id="tbmk">*</span>
+						</div>
+
+						<label for="" class="control-label col-xs-3">Nhập lại mật khẩu</label>
+						<div class="col-xs-9">
+							<input type="text" name="" id="txtnlmk" class="form-control"></input>
+							<span class="text-danger" id="tbnlmk">*</span>
+						</div>
+
+
+						<h4 class="text-center text-danger"><strong>THÔNG TIN CÁ NHÂN</strong></h4>
+						<label for="" class="col-xs-3 ">Ảnh thẻ:</label>
+						<div class="col-xs-9">
+							<input type="file" name="" id="txtAnh" class="form-control" placeholder="Choose file"><br>
+						</div>
+
+						<label for="" class="control-label col-xs-3">Họ và tên</label>
+						<div class="col-xs-9">
+							<input type="text" name="" id="txtten" class="form-control"></input>
+							<span class="text-danger" id="tbten">*</span>
+						</div>
+
+
+						<label for="" class="control-label col-xs-3">Ngày sinh</label>
+						<div class="col-xs-9">
+							<input type="date" name="" id="txtns" class="form-control"></input>
+							<span class="text-danger" id="tbns">*</span>
+						</div>
+
+						<label for="" class="control-label col-xs-3">Ngày tham gia</label>
+						<div class="col-xs-9">
+							<input type="date" name="" id="txtntg" class="form-control"></input>
+							<span class="text-danger" id="tbntg">*</span>
+						</div>
+
+						<label for="" class="control-lable col-xs-3">Địa chỉ</label>
+						<div class="col-xs-9">
+							<input type="text" name="" id="txtdc" class="form-control"></input>
+							<span class="text-danger" id="tbcd">*</span>
+						</div>
+
+						<label for="" class="control-label col-xs-3">Điện thoại</label>
+						<div class="col-xs-9">
+							<input type="text" name="" id="txtsdt" class="form-control"></input>
+							<span class="text-danger" id="tbsdt">*</span>
+						</div>
+
+						<label for="" class="control-label col-xs-3">Email</label>
+						<div class="col-xs-9">
+							<input type="email" name="" id="txtMail" class="form-control"
+								placeholder="Nhập vào email dạng: ten@tencongty.com"></input>
+							<span class="text-danger" id="tbMail">*</span>
+						</div>
+
+						<label for="" class="control-label col-xs-3">Ngôn ngữ</label>
+						<div class="col-xs-9">
+							<div class="form-check-inline">
+								<label for="" class="form-check-label">
+									<input type="checkbox" name="Lang" id="" class="form-check-input"
+										values="English">Engligh
+									<input type="checkbox" name="Lang" id="" class="form-check-input"
+										values="France">France
+									<input type="checkbox" name="Lang" id="" class="form-check-input"
+										values="Korea">Korea
+								</label>
+							</div>
+
+						</div>
+						<br>
+						<label for="" class="control-label col-xs-3">Lớp</label>
+						<div class="col-xs-9">
+							<select name="" id="lstlop" class="form-control">
+								<option value="DHKTPM15A">DHKTPM15A</option>
+								<option value="DHCNTT15B">DHCNTT15B</option>
+								<option value="DHKHTMT15C">DHKHTMT15C</option>
+							</select>
+							<br>
+						</div>
+
+						<label for="" class="control-label col-xs-3">Môn học</label>
+						<div class="col-xs-9">
+							<select name="" id="lstmon" class="form-control">
+								<option value="3,HTCNW">Hệ thống công nghệ web</option>
+								<option value="4,LTHSKJava">Lập trình hướng sự kiện java</option>
+								<option value="3,HCSDL">Hệ cơ sở dữ liệu</option>
+							</select>
+							<br>
+						</div>
+						<label for="" class="col-xs-3 ">Loại:</label>
+						<div class="col-xs-9 form-check-inline">
+							<label for="" class="form-check-label">
+								<input type="radio" name="loai" id="" class="form-check-input" value="LT">Lý
+								thuyết
+								<input type="radio" name="loai" id="" class="form-check-input" value="TH">Thực
+								hành
+							</label>
+
+						</div>
+						<label for="" class="col-xs-3 ">Số tín chỉ:</label>
+						<div class="col-xs-9" width="30">
+							<input type="button" name="" readonly id="txttc" class="btn btn-outline-secondary"><br>
+						</div>
+						<input type="button" value="Đăng ký" id="btndk" class="btn btn-info">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

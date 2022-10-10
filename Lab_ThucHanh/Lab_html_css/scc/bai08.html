@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 08</title>
+    <meta name="19434551" content="Ho Thi Hong Thuy">
+    <style>
+        .background{
+			color: black;
+			margin-top: 20px;
+			margin-bottom: 50px;
+			margin-right: 320px;
+			margin-left: 320px;
+			border: 10px solid Gainsboro;
+		}
+        p{
+            text-align: center;
+            margin-left: 60px;/*border-border*/
+            margin-right: 15px;
+            line-height: 1.8;
+        }
+        h3{
+            text-align: center;
+            margin-left: 180px;/*border-border*/
+            margin-right: 180px;
+            line-height: 1.8;
+            height: 100px;
+        }
+        p.a {
+            border: 10px solid;
+            border-color: #85c226 #F7c200 #4493a0 #DF127B; /* top-right-bottom-left */
+        }
+        p.b{
+            border: 10px solid;
+            border-color: #85c226 #F7c200 #4493a0 #DF127B;
+            border-style: solid dotted groove double;
+        }
+        p.c{
+            border: 10px solid;
+            border-color:#85c226 #F7c200 #4493a0 #DF127B;
+            border-width: 5px 10px 15px 20px;
+        }
+        p.d{
+            border: 10px solid;
+            border-color:#85c226 #F7c200 #4493a0 #DF127B;
+            border-radius: 0px 30px 70px 20px;
+        }
+        h3.e{
+            border-width: 4px 30px 4px 30px;
+            border-style: groove ridge dashed groove;
+            border-color: #cc0000;
+            border-radius: 100px 100px 0 0;
+            -moz-border-radius: 100px 100px 0 0;
+            -webkit-border-radius:100px 100px 0 0;
+        }
+        h3.f{
+            border-radius: 20px;
+            -moz-border-radius: 20px;
+            -webkit-border-radius:20px;
+        }
+        h3.g{
+            border-width: 0px 12px 0px 12px;
+            border-style: double;
+            border-color: violet;
+            border-radius: 50px 40px 60px 60px;
+            -moz-border-radius: 50px 40px 60px 60px;
+            -webkit-border-radius:50px 40px 60px 60px;
+        }
+        h3.h{
+            border-radius: 20px 100px 100px 20px;
+            -moz-border-radius: 20px 100px 100px 20px;
+            -webkit-border-radius: 20px 100px 100px 20px;
+        }
+        h3.i{
+            background: orange;
+            border-width: 4px 30px 4px 30px;
+            border-style: solid;
+            border-color: #56c6d9 #56c6d9 #fe2192 #fe2192 ;
+            border-radius: 0 120px 0 120px;
+            -moz-border-radius: 0 120px 0 120px;
+            -webkit-border-radius:0 120px 0 120px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: red;">Bài 8: Tạo các Border</h1>
+    <h2>Bài 8.a</h2>
+    <div class="background">
+        <h2>Border Styles</h2>
+        <b>Synax:</b> border-color:(top) (right) (bottom) (left)<br>
+        <b>Example</b> border-color:#85c226 #F7c200 #4493a0 yellow;
+    <p class="a">
+         Here the top border is green#85C226) in color.<br>
+        right border is yellow#F7C200).<br>
+        the bottom has blue4493A0)<br>
+        and Left horder is pink #DF127B in color.<br>
+    </p>
+    </div>
+    <h2>Bài 8.b</h2>
+    <div class="background">
+        <h2>Border Color</h2>
+        This property must be used if you are using any of the Border properties<br>
+        Without using this border-style property you wont see any borders at all.<br>
+        <b>Syntax:</b> border-style: (top) (right) (bottom) (lef) <br>
+        <b>Example</b>border-style: solid dotted groove double;<br>
+    <p class="b">
+        Here the top border (green) has a solidl style,<br>
+        right (yellow) one has dotted,<br>
+        botton (blue) one has groove and<br>
+        the left (pink) one has the double style.<br>
+    </p>
+    </div>
+    <h2>Bài 8.c</h2>
+    <div class="background">
+        <h2>Border Width</h2>
+        <b>Syntax:</b> border-width: (top) (right) (bottom) (left) <br>
+        <b>Example</b>border-width: 5px 10px 15px 20px<br>
+    <p class="c">
+        Here the top border (green)  with is 5 pixed,<br>
+        right (yellow) is 10 pixed wide<br>
+        botton (blue)  is 15 pixed<br>
+        the left (pink)  is 20 pixed.<br>
+    </p>
+    </div>
+    <h2>Bài 8.d</h2>
+    <div class="background">
+        <h2>Border Radius</h2>
+        <b>Syntax:</b> border-radius: (top-left) (top-right) (bottom-right) (bottom-left) <br>
+        <b>Example</b>border-width: 0px 30px 70px 20px<br>
+    <p class="d">
+        No Border radius (Opx) has been applied on the top-left (green-pink comer.<br>
+        Botder radius (30px) has been applied on the top-right (green-yellow) corner.<br>
+        Border radius (70px) has been applied on the bottom-tight (blue-yellow)cotner.<br>
+        Border radius (20px ) has been applied on the bottom-left (blue-pink) comer.<br>
+    </p>
+    </div>
+    <h2>Bài 8.e</h2>
+    <div class="background">
+    <h3 class="e">
+       Adv-Hemisphere
+    </h3>
+    </div>
+    </div>
+    <h2>Bài 8.f</h2>
+    <div class="background">
+    <h3 class="f">
+       Round<br>
+       Rectangle<br>
+    </h3>
+    </div>
+    <h2>Bài 8.g</h2>
+    <div class="background">
+    <h3 class="g">
+       Advanced Round<br>
+       Rectangle
+    </h3>
+    </div>
+</div>
+<h2>Bài 8.h</h2>
+<div class="background">
+<h3 class="h">
+   Bullet<br>
+</h3>
+</div>
+</div>
+<h2>Bài 8.i</h2>
+<div class="background">
+<h3 class="i">
+   Bullet<br>
+</h3>
+</div>
+    
+    
+</body>
+</html>

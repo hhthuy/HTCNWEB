@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 9</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <span>Đổi tự độ F sang độ C</span>
+        <input type="text" id="doF">
+        <input type="button" value="Đổi" id="doi">
+        <span id="doC">...</span>
+    </div>
+    <script lang="JavaScript">
+        $(document).ready(function () {
+            $("#doi").click(function() {
+                var degFahren = document.getElementById("doF").value;
+                var degCent = 5 / 9 * (degFahren - 32);
+                document.getElementById("doC").innerHTML = degCent;
+            });
+        });
+    </script>
+</body>
+</html>

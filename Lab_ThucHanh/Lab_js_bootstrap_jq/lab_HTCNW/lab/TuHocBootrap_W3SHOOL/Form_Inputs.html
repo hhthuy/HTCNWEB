@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Form control: input</h2>
+    <p>The form below contains two input elements; one of type text and one of type password:</p>
+    <form action="/action_page.php">
+      <div class="form-group">
+        <label for="usr">Name:</label>
+        <input type="text" class="form-control" id="usr" name="username">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" name="password">
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+      </div>
+      <br>
+      <!-- .form-check-inlinelớp nếu bạn muốn các hộp kiểm xuất hiện trên cùng một dòng: -->
+      <div class="form-check">
+        <label class="form-check-label" for="check2">
+          <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something">Option 2
+        </label>
+      </div>
+      <br>
+      <!-- .form-check-inlinelớp nếu bạn muốn các nút radio xuất hiện trên cùng một dòng: -->
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optradio">Option 1
+        </label>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br>
+    <h2>Form control: select</h2>
+    <form>
+      <div class="form-group">
+        <label for="sel1">Select list (select one):</label>
+        <select class="form-control" id="sel1" name="sellist1">
+          <option>1</option>
+          <option>2</option>
+        </select>
+        <br>
+        <label for="sel2">Mutiple select list (hold shift to select more than one):</label>
+        <select multiple class="form-control" id="sel2" name="sellist2">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+      </div>
+
+    </form>
+    <h2>Form Control Sizing</h2>
+    <form>
+      <div class="form-group"><input type="text" class="form-control form-control-sm" placeholder="Small" name="text1">
+      </div>
+      <div class="form-group"><input type="text" class="form-control" placeholder="Default" name="text2"></div>
+      <div class="form-group"><input type="text" class="form-control form-control-lg" placeholder="Largel" name="text3">
+      </div>
+      <div class="form-group"><input type="text" class="form-control-plaintext"
+          placeholder="Form control with plain text" name="text2"></div>
+    </form>
+    <br>
+    <h2>Form Control Range and File</h2>
+    <form>
+      <div class="form-group"><input type="range" class="form-control-range" name="range"></div>
+      <div class="form-group"><input type="file" class="form-control-file border" name="file"> </div>
+    </form>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  </div>
+
+</body>
+
+</html>

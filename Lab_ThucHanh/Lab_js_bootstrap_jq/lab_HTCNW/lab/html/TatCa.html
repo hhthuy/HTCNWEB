@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnTap</title>
+    <meta name="19434551" content="Hồ Thị Hồng Thủy">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#myBtn").click(function () {
+                $("#myModal").modal();
+            });
+            //KIEM TRA TEN
+            function kiemtraName() {
+                var re = /^([A-Z]{1}[a-z]*\s)*([A-Z]{1}[a-z]*)$/;
+                if ($("#txtName").val() == "") {
+                    $("#tbName").html("Không được bỏ trống");
+                    return false;
+                }
+                if (!re.test($("#txtName").val())) {
+                    $("#tbName").html("Ký tự đầu phải viết hoa!");
+                    return false;
+                }
+                $("#tbName").html("<br>");
+                return true;
+            }
+            $("#txtName").blur(kiemtraName);
+            //KIEM TRA MA
+            function KiemTraMA() {
+                var ma = $("#txtMa").val();
+                var re = /^[0-9]{8}$/;
+                if (ma == "") {
+                    $("#tbMa").html("Không được bỏ trống");
+                    return false;
+                }
+                if (!re.test(ma)) {
+                    $("#tbMa").html("Phải nhập số và đúng định dạng: 12345678");
+                    return false;
+                }
+                $("#tbMa").html("<br>");
+                return true;
+            }
+            $("#txtMa").blur(KiemTraMA);
+            //KIEM TRA DIA CHI
+            function KiemTraDC() {
+                if ($("#txtDC").val() == "") {
+                    $("#tbDC").html("Không được bỏ trống");
+                    return false;
+                }
+                $("#tbDC").html("*");
+                return true;
+            }
+            $("#txtDC").blur(KiemTraDC);
+            //KIEM TRA NGAY SINH (Năm sinh < 2000)
+            function kiemtraNamSinh() {
+                var ngaysinh = $("#txtNS").val();
+                if (ngaysinh == "") {
+                    $("#tbNS").html("Không được để trống!");
+                    return false;
+                }
+                var ns = new Date($("#txtNS").val());
+                var cur = new Date();
+                if (!(ns.getFullYear() <= 2002)) {
+                    $("#tbNS").html("Năm sinh <= 2002");
+                    return false;
+                }
+                $("#tbNS").html("<br>");
+                return true;
+            } $("#txtNS").blur(kiemtraNamSinh);
+
+            //KIEM TRA NGAY PHAI SAU NGAY HIEN TAI 3 NGAY
+            function kiemtraNgay() {
+                var ngayTG = $("#txtNgayTG").val();
+                if (ngayTG == "") {
+                    $("#tbDay").html("Bat buoc");
+                    return false;
+                }
+                var day = new Date($("#txtNgayTG").val());
+                var today = new Date();
+                today.setDate(today.getDate() + 7);
+                if (day < today) {
+                    $("#tbNgayTG").html("Phải sau ngày hiện hành 7 ngày!");
+                    return false;
+                }
+                $("#tbNgayTG").html("<br>");
+                return true;
+            }
+            $("#txtNgayTG").blur(kiemtraNgay);
+            //KIEM TRA MAIL
+            function kiemtraMail() {
+                var mail = $("#txtMail").val();
+                var re = /^[a-zA-Z0-9.\_\-]+@([a-zA-Z0-9])+.\w{3}$/;
+                if (mail == "") {
+                    $("#tbMail").html("Không được bỏ trống");
+                    return false;
+                }
+                if (!re.test(mail)) {
+                    $("#tbMail").html("Nhập đúng định dạng mail abc@gmail.com");
+                    return false;
+                }
+                $("#tbMail").html("<br>");
+                return true;
+            }
+            $("#txtMail").blur(kiemtraMail);
+            //FILE ANH
+            // function ktfile() {
+            //     var file = $("#txtFile").val();
+            //     var check = file.split('.').pop().toLowerCase();
+            //     if (file == null) {
+            //         $("#erFile").html("Bắt buộc nhập !");
+            //     }
+            //     if ($.inArray(check, ['png', 'gif', 'jpg']) == -1) {
+            //         $("#erFile").html("File ảnh phải là đuôi jpg, gif, jpg không phan biệt hoa thường !");
+            //         return false;
+            //     }
+            //     $("#erFile").html("*");
+            //     return file;
+            // }
+            // $("#txtFile").blur(ktfile);
+            //SDT 
+            function kiemtraPhone() {
+                var phone = $("#txtPhone").val();
+                var re = /^(090)-\d{4}-\d{3}$/; //( /^03\\d{8}$/; ) (/^[0-9]{9,10}$/;)(09|03|07|08|05)+([0-9]{8})
+                if (phone == "") {
+                    $("#tbPhone").html("Không được bỏ trống");
+                    return false;
+                }
+                if (!re.test(phone)) {
+                    $("#tbPhone").html("Nhập theo đúng dạng (090)-xxxx-xxx");
+                    return false;
+                }
+                $("#tbPhone").html("*");
+                return true;
+            }
+            $("#txtPhone").blur(kiemtraPhone);
+
+            var count = 1;
+            $("#btnSave").click(function () {
+                var ma = $("#txtMa").val();
+                var ten = $("#txtName").val();
+                var dc = $("#txtDC").val();
+                var ngaysinh = $("#txtNS").val();
+                var ngayTG = $("#txtNgayTG").val();
+                var mail = $("#txtMail").val();
+                var phone = $("#txtPhone").val();
+                var anh = ($("#txtAnh").val()).lastIndexOf('\\');
+                var food = "";
+                $("input[type='checkbox']:checked").each(function () {
+                    food += $(this).val() + "<br>";
+                });
+                var tinh = $("#list option:selected").val();
+
+                //COMBO-GIA
+                var combo = $("#lstCombo option:selected").val();
+                combo = combo.substring(2, combo.length);//3,aaa   
+                var soluong = $("#lstCombo option:selected").val();
+                //THANH TOAN
+                thanhtoan = $("input[type='radio']:checked").val();
+
+                if (kiemtraName() == true 
+                && KiemTraMA()==true 
+                && kiemtraNamSinh()==true 
+                &&kiemtraNgay()==true
+                &&kiemtraMail() ==true
+                && kiemtraPhone()==true
+                ) {
+                    var newRow = "<tr><td>" + (count) + "</td><td>" + ma + "</td><td>" + ten + "</td><td>" + dc + "</td><td>" + ngaysinh + "</td><td>" + ngayTG + "</td><td>" + mail + "</td><td>" + phone + "</td><td>" + ($("#txtAnh").val()).slice(anh + 1) + "</td><td>" + food + "</td><td>" + tinh + "</td><td>" + combo + "</td><td>" + soluong + "</td><td>" + thanhtoan + "</td></tr>"
+                    $("#table").append(newRow);
+                    count++;
+                    $("#myModal").modal("hide");
+                    return true;
+                }
+                return false;
+            });
+
+            //COMBO
+            $("#lstCombo").change(function () {
+                var gt = $("#lstCombo option:selected").val();
+                var soluong = gt.substr(0, 1);
+                $("#txtSL").val(soluong);
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <!--Tao layout trang-->
+    <div class="container">
+        <!--Tao Header trang-->
+        <div class="col-xs-12" style="margin-top:-10px;">
+            <nav class="navbar navbar-collapse">
+                <a href="http://bactom.com">
+                    <img src="../img/Banner.png" alt="" width="100%">
+                </a>
+            </nav>
+        </div>
+        <!--Tao menu-->
+        <div class="col-xs-12">
+            <!-- <nav class="navbar navbar-collapse">
+                <ul class="nav nav-pills"> -->
+            <nav class="navbar bg-info">
+                <ul class="nav navbar-nav">
+                    <li><a href="Home.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVICES <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" id="myBtn">Online</a></li>
+                            <li><a href="#" id="myBtn1">Offline</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!---= content LEFT-RIGHT-->
+        <div class="col-xs-12">
+            <section class="col-xs-3">
+                <img src="../img/left.png" alt="" width=100% />
+            </section>
+            <aside class="col-xs-9">
+                <h2 class="text-left">Customer order list</h2>
+                <table class="table table-striped" role="table" id="table">
+                    <tr>
+                        <th>#</th>
+                        <th>Mã</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Birthday</th>
+                        <th>Delivery Date</th>
+                        <th>Email</th>
+                        <th>Telephone Number</th>
+                        <th>Anh the</th>
+                        <th>Food</th>
+                        <th>Province</th>
+                        <th>Combo</th>
+                        <th>Số lượng</th>
+                        <th>Thanh toán</th>
+                    </tr>
+                </table>
+            </aside>
+        </div>
+        <!--Tao footer-->
+        <p class="modal-footer text-left text-success" style="text-align:left">
+            &copy;2019-SE-FIT.ALL RIGHTS RESERVED
+        </p>
+    </div>
+    <!--Tao Modal-->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-tille text-center">Customer Infomation</h2>
+                </div>
+
+                <div class="modal-body">
+                    <form class="form-horizontial">
+                        <label for="txtMa" class="control-label col-xs-12" style="text-align:left;">Mã thành
+                            viên</label>
+                        <div class="col-xs-12">
+                            <input type="text" id="txtMa" class="form-control" placeholder="Mã thành viên">
+                            <span class="text-danger" id="tbMa">*</span>
+                        </div>
+                        <label for="" class="control-lable col-xs-3">Customer name</label>
+
+                        <div class="col-xs-9">
+                            <input type="text" name="name" id="txtName" class="form-control" placeholder="Your name">
+                            <span id="tbName" class="text-danger">*</span>
+                        </div>
+
+                        <label for="" class="control-lable col-xs-3">Address</label>
+                        <div class="col-xs-9">
+                            <input type="text" name="" id="txtDC" class="form-control" placeholder="Your address">
+                            <span id="tbDC" class="text-danger">*</span>
+                        </div>
+
+
+
+                        <label for="" class="col-xs-3 control-label">Birthday</label>
+                        <div class="col-xs-9">
+                            <input type="date" name="" id="txtNS" class="form-control">
+                            <span class="text-danger" id="tbNS">*</span>
+                        </div>
+
+                        <label for="" class="control-lable col-xs-3">Delivery date</label>
+                        <div class="col-xs-9">
+                            <input type="date" name="" id="txtNgayTG" class="form-control">
+                            <span id="tbNgayTG" class="text-danger">*</span>
+                        </div>
+
+                        <label for="" class="control-lable col-xs-3">Email</label>
+                        <div class="col-xs-9">
+                            <input type="email" name="" id="txtMail" class="form-control" placeholder="Your email">
+                            <span id="tbMail" class="text-danger">*</span>
+                        </div>
+
+                        <label for="" class="control-lable col-xs-3">Telephone number</label>
+                        <div class="col-xs-9">
+                            <input type="text" name="" id="txtPhone" class="form-control" placeholder="Your phone">
+                            <span id="tbPhone" class="text-danger">*</span>
+                        </div>
+
+                        <label for="" class="col-xs-3" class="control-label">Ảnh thẻ</label>
+                        <div class="col-xs-9">
+                            <input type="file" name="" id="txtAnh" class="form-control">
+                            <span class="text-danger" id="tbAnh">*</span>
+                        </div>
+                        <lable for="" class="col-xs-3" class="control-label">Food</lable>
+                        <div class="col-xs-9">
+                            <div class="form-check-inline">
+                                <label for="" class="form-check-label"></label>
+                                <input type="checkbox" name="" id="txtcheck" class="form-check-input"
+                                    value="Noodle">Noodle
+                                <input type="checkbox" name="" id="txtcheck" class="form-check-input" value="Rice">Rice
+                                <input type="checkbox" name="" id="txtcheck" class="form-check-input" value="Cafe">Cafe
+                                <br>
+                                <span id="tbcheck" class="text-danger">*</span>
+                            </div>
+                        </div>
+
+                        <label for="" class="col-xs-3" class="control-label">Tỉnh</label>
+                        <div class="col-xs-9">
+                            <select id="list" class="form-control">
+                                <option value="Tp.HCM">Tp.HCM</option>
+                                <option value="Bình Thuận">Bình Thuận</option>
+                                <option value="Hậu Giang">Hậu Giang</option>
+                                <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                <option value="Cần Thơ">Cần Thơ</option>
+                            </select>
+                            <span id="tbTinh" class="text-danger">*</span>
+                        </div>
+
+                        <label for="" class="control-label col-xs-3">Combo</label>
+                        <div class="col-xs-9">
+                            <select name="" id="lstCombo" class="form-control">
+                                <option value="1,Gà rán-Khoai Tây">Gà rán-Khoai Tây</option>
+                                <option value="2,Cơm tấm-Cafe">Cơm tấm-Cafe</option>
+                                <option value="3,Bánh ngọt-Trà sữa">Bánh ngọt-Trà sữa</option>
+                            </select>
+                            <br>
+                        </div>
+                        <label for="" class="col-xs-3">Số lượng:</label>
+                        <div class="col-xs-9 " width="30">
+                            <input type="button" name="" readonly id="txtSL" class="btn btn-outline-secondary">
+                        </div>
+
+
+                        <label class="col-xs-3">Thanh toan</label>
+                        <div class="col-xs-9">
+                            <input type="radio" name="loai" id="txtTT" class="form-check-input"
+                                value="Chuyen khoan">Chuyển khoan
+                            <input type="radio" name="loai" id="txtTT" class="form-check-input" value="Tien mat">Tien
+                            mat
+                        </div>
+
+                        <button type="button" id="btnSave" class="btn btn-success btn-group-justified">Save</button><br>
+                        <button type="reset" class="btn btn-primary">Reset</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 10</title>
+    <meta charset="UTF-8">
+    <meta name="19434551" content="Ho Thi Hong Thuy">
+   <style>
+       #animated {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    left: 0;
+    top: 100px;
+    background-color: #ffcc00;
+    animation-name: scroll;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+@keyframes scroll {
+    to {
+        left: 100%;
+        transform: rotate(180deg);
+    }
+}
+   </style>
+</head>
+<body>
+    <div id="animated">
+
+    </div>
+</body>
+</html>

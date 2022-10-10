@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giai de 302</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myBtn").click(function () {
+                $("#myModal").modal()
+            })
+            //KIEM TRA DU LIEU
+            //KT TÊN
+            function kiemtraName() {
+                var ten = $("#txtName").val();
+                var re = /^([A-Z]{1}[a-z]*\s)*([A-Z]{1}[a-z]*){1}$/;
+                if (ten == "") {
+                    $("#tbName").html("Không được bỏ trống");
+                    return false;
+                }
+                if (!re.test(ten)) {
+                    $("#tbName").html("Tên phải viết hoa chữ đầu");
+                    return false;
+                }
+                $("#tbName").html("<br>")
+                return true;
+            } $("#txtName").blur(kiemtraName);
+            //KT Số CMND cũ: Chỉ dùng 9 chữ số
+            function kiemtraSCMNDCu() {
+                var cmnd = $("#txtCMND").val();
+                var re = /^[0-9]{9}$/
+                if (cmnd == "") {
+                    $("#tbCMND").html("Không được bỏ trống");
+                    return false;
+                }
+                if (!re.test(cmnd)) {
+                    $("#tbCMND").html("Chỉ dùng 9 chữ số");
+                    return false;
+                }
+                $("#tbCMND").html("<br>")
+                return true;
+            } $("#txtCMND").blur(kiemtraSCMNDCu);
+            //Địa chỉ dùng chữ: Dùng chữ hoa, 
+            function kiemtraQQ() {
+                var que = $("#txtQQ").val();
+                var re = /^[A-Z]{1,}$/
+                if (que == "") {
+                    $("#tbQQ").html("Không được bỏ trống");
+                    return false;
+                }
+                if (!re.test(que)) {
+                    $("#tbQQ").html("Chỉ dùng chữ hoa");
+                    return false;
+                }
+                $("#tbQQ").html("<br>")
+                return true;
+            } $("#txtQQ").blur(kiemtraQQ);
+            //Email nhập theo mẫu xxxxxx@iuh.edu.vn
+            function kiemtraMail() {
+                var mail = $("#txtMail").val();
+                var re = /^\w+([\.-]?\w+)*@iuh.edu.vn$/;
+                if (mail == "") {
+                    $("#tbMail").html("Không được bỏ trống");
+                    return false;
+                }
+                if (!re.test(mail)) {
+                    $("#tbMail").html("Email nhập theo mẫu xxxxxx@iuh.edu.vn");
+                    return false;
+                }
+                $("#tbMail").html("<br>")
+                return true;
+            } $("#txtMail").blur(kiemtraMail);
+
+            //SDT:  0xxx-xxx-xxx 
+            function kiemtraPhone() {
+                var sdt = $("#txtSDT").val();
+                var re = /^(0)[0-9]{3}-\d{3}-\d{3}$/;
+                if (sdt == "") {
+                    $("#tbSDT").html("Không được bỏ trống");
+                    return false;
+                }
+                if (!re.test(sdt)) {
+                    $("#tbSDT").html("Nhập theo đúng dạng 0xxx-xxx-xxx");
+                    return false;
+                }
+                $("#tbSDT").html("<br>");
+                return true;
+            }
+            $("#txtSDT").blur(kiemtraPhone);
+            //XUẤT TABLE
+            var count = 1;
+            $("#btnSave").click(function () {
+                var ten = $("#txtName").val();
+                var cmnd = $("#txtCMND").val();
+                var que = $("#txtQQ").val();
+                var sdt = $("#txtSDT").val();
+                var mail = $("#txtMail").val();
+                var anh = ($("#txtAnh").val()).lastIndexOf('\\');
+
+                if (kiemtraName() == true && kiemtraSCMNDCu() == true && kiemtraQQ() == true&&kiemtraMail()==true&&kiemtraPhone()==true) {
+                    var newRow = "<tr>>td>" + (count++) + "</td><td>" + ten + "</td><td>" + cmnd + "</td><td>" + que + "</td><td>" + sdt + "</td><td>" + mail + "</td><td>" + sdt + "</td><td>" + ($("txtAnh")).slice(anh + 1) + "</td></tr>"
+                    $("#table").append(newRow);
+                    $("#myModal").modal("hide"); return true;
+                }
+                return false;
+            });
+        })
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-xs-12">
+            <nav class="navbar navbar-collaspe" style="margin:-2px;">
+                <img src="../img/banner.PNG" width="100%" alt="">
+            </nav>
+        </div>
+        <div class="col-xs-12">
+            <nav class="navbar navbar-collaspe">
+                <ul class="nav nav-pills">
+                    <li><a href="#">Đăng nhập</a></li>
+                    <li><a href="#" id="myBtn">Đăng ký</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-xs-12">
+            <h1 class="text-center" style="font-size: 40px;">DANH SÁCH ĐĂNG KÝ LÀM CĂN CƯỚC SINH VIEN TRƯỜNG ĐHCN THÀNH
+                PHỐ HỒ CHÍ MINH</h1>
+            <table class="table table-striped" id="table" role="table">
+                <tr>
+                    <th>STT</th>
+                    <th>Họ tên</th>
+                    <th>SCMND cũ</th>
+                    <th>Quê quán</th>
+                    <th>Email</th>
+                    <th>Điện thoại</th>
+                    <th>Ảnh đại diện</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <p class="text-center">SVTH: Hồ Thị Hồng Thủy, Mã sinh viên:19434551, Lớp: DHKTPM15B</p>
+    <div class="modal fade" role="dialog" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="text-center">THÔNG TIN CÁ NHÂN</h2>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontical" role="form">
+                        <label for="" class="col-xs-3 control-label text-right">Họ tên</label>
+                        <div class="col-xs-9">
+                            <input type="text" name="" id="txtName" placeholder="Nhập họ tên" class="form-control">
+                            <span class="text-danger" id="tbName">*</span>
+                        </div>
+
+                        <label for="" class="col-xs-3 control-label text-right">SCMND cũ</label>
+                        <div class="col-xs-9">
+                            <input type="text" name="" id="txtCMND" placeholder="Nhập SCMND cũ" class="form-control">
+                            <span class="text-danger" id="tbCMND">*</span>
+                        </div>
+
+                        <label for="" class="col-xs-3 control-label text-right">Quê quán</label>
+                        <div class="col-xs-9">
+                            <input type="text" name="" id="txtQQ" placeholder="Nhập tỉnh của bạm" class="form-control">
+                            <span class="text-danger" id="tbQQ">*</span>
+                        </div>
+
+                        <label for="" class="col-xs-3 control-label text-right">Email</label>
+                        <div class="col-xs-9">
+                            <input type="mail" name="" id="txtMail" placeholder="Nhập Email của bạn"
+                                class="form-control">
+                            <span class="text-danger" id="tbMail">*</span>
+                        </div>
+
+                        <label for="" class="col-xs-3 control-label text-right">Số điện thoại</label>
+                        <div class="col-xs-9">
+                            <input type="tel" name="" id="txtSDT" placeholder="Nhập họ tên" class="form-control">
+                            <span class="text-danger" id="tbSDT">*</span>
+                        </div>
+
+                        <label for="" class="col-xs-3 control-label text-right">Ảnh đại diện</label>
+                        <div class="col-xs-9">
+                            <input type="file" name="" id="txtAnh" class="form-control">
+                            <span class="text-danger" id="tbAnh"><br></span>
+                        </div>
+
+                        <button type="button" class="btn btn-success btn-group-justified" id="btnSave">Lưu</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

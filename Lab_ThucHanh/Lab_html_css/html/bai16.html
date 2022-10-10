@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title> Bai16</title>
+		<meta charset="utf-8">
+		<meta name="19434551" content="Ho Thi Hong Thuy">
+		<style >		.background{
+			color: black;
+			margin-top: 20px;
+			margin-bottom: 50px;
+			margin-right: 500px;
+			margin-left: 500px;
+			border: 10px solid Gainsboro;
+		}
+		
+		</style>
+</head>
+<body>
+<h1 style="color:red;"> Bai 16</h1>
+<div class="background">
+<form>
+	
+		<label style="font-size:30px;"><b>Travel reservation form</b></label><br><br>
+		<label>* denotes mandotory</label><br><br>
+	
+		<label for ="txtName">Full name*:</label><br>
+		<input type="text" name="txtName" id="txtName" size="20" maxlength="250"><br>
+		
+		<label for ="emailAddress"> Email address*:</label><br>
+		<input type="text" name="emailAddress" id="emailAddress" size="20" maxlength="250"><br>
+		
+		<label for="tours">Select Tour Package*</label><br>
+		<input list="Tour" name="tours" id="tours"><br>
+			<datalist id="Tour">
+				<option value="City tour" selected>
+				<option value="Diving tour">
+				<option value
+				="Leisure Travel">
+		</datalist>
+		<label for ="arrlDate"> Arrival date*:</label><br>
+		<input type="date" name="arrlDate" id="arrlDate" size="20" maxlength="250"><br>
+		
+		<label for ="phone"> Number of persons:</label><br>
+		<input type="tel" name="phone" id="phone" placeholder="UNKNOWN_TYPE"><br>
+		
+		<label for ="Avail">What would you want to avail?*:</label><br>
+		<label for ="Avail1"> Boarding</label>
+		<input type="checkbox" name="Avail1" id="Avail1"><br>
+		<label for ="Avail1"> Fooding</label>
+		<input type="checkbox" name="Avail2" id="Avail2"><br>
+		<label for ="Avail1"> Sight seeing</label>
+		<input type="checkbox" name="Avail3" id="Avail3"><br>
+		
+		<label for ="code"> Discout Coupon code:</label><br>
+		<input type="password" name="code" id="code" class="code" placeholder="UNKNOWN_TYPE"><br>
+		
+		<label for ="Conditions"> Terms and conditions*</label><br>
+		<input type="radio" name="Conditions" id="Agree">
+		<label for ="Agree">I agree</label>
+		<input type="radio" name="Conditions" id="Agree">
+     	<label for ="Agree">I disagree</label><br>
+		
+		<input type="submit" value="Complete reservation"><br>
+	</form>		
+		
+			
+</div>
+</body>
+</html>
